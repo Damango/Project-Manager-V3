@@ -1,0 +1,68 @@
+.link-item-container {
+	position: relative;
+	border-radius: 3px;
+	padding: 10px;
+	margin-bottom: 5px;
+	font-family: "Jaldi";
+	font-weight: 600;
+	font-size: 21px;
+
+	color: rgb(145, 145, 145);
+	transition: 0.3s;
+}
+
+.link-item-container:hover {
+	color: #1b1f25;
+	cursor: pointer;
+}
+
+.link-item-header {
+}
+
+.link-item-header:hover {
+}
+
+.link-item-container i {
+	margin-right: 10px;
+}
+
+.link-item-container .fa-chevron-down {
+	position: absolute;
+	right: 0px;
+	font-size: 15px;
+}
+
+.link-item-header {
+	position: relative;
+}
+
+.link-drawer-open {
+	position: relative;
+
+	width: 100%;
+	height: 170px;
+	overflow: hidden;
+	transition: 0.3s;
+}
+
+.link-drawer-closed {
+	position: relative;
+
+	width: 100%;
+	height: 0px;
+	overflow: hidden;
+	transition: 0.3s;
+}
+
+.sub-link {
+	border-left: 1px solid black;
+	border-radius: 0px;
+	margin-left: 10px;
+	margin-bottom: 0px;
+	padding-left: 20px;
+	transition: 0.3s;
+}
+
+.sub-link:hover {
+	background-color: rgb(230, 230, 230);
+}

@@ -1,0 +1,60 @@
+.NavBar-container {
+	position: relative;
+	background-color: white;
+	height: 100%;
+	width: 320px;
+
+	border: 1px solid black;
+}
+
+.NavBar-wrapper {
+	position: relative;
+
+	width: 90%;
+	height: 95%;
+}
+
+.NavBar-header {
+	border-bottom: 1px solid rgb(204, 204, 204);
+	padding-bottom: 20px;
+	margin-bottom: 20px;
+}
+
+.NavBar-logo {
+	position: relative;
+	border-radius: 5px;
+	background-color: #256aeb;
+	width: 50px;
+	height: 50px;
+	color: white;
+	display: inline-block;
+}
+
+.NavBar-collapse {
+	position: relative;
+	float: right;
+	padding: 15px;
+	right: 0px;
+	display: inline-block;
+	background-color: rgb(204, 204, 204);
+	border-radius: 5px;
+}
+
+.NavBar-collapse i {
+	position: absolute;
+	color: #2f3640;
+	font-size: 18px;
+}
+
+.NavBar-logo i {
+	position: absolute;
+	font-size: 25px;
+}
+
+.NavBar-footer {
+	position: absolute;
+	border-top: 1px solid rgb(204, 204, 204);
+	bottom: 0px;
+	width: 100%;
+	height: 100px;
+}
