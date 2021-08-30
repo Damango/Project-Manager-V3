@@ -1,11 +1,14 @@
-import NavBar from "./PhidomComponents/NavBar/NavBar"
+
 import './App.css';
 
 function App() {
   return (
     <div className="App">
 
-      <NavBar />
+      <div className="nav-bar-container">
+        <div className="nav-bar-wrapper"></div>
+        
+      </div>
      
     </div>
   );
