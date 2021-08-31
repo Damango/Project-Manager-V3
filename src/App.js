@@ -1,13 +1,51 @@
 
 import './App.css';
 
+
+
+
+
+
 function App() {
+
+
+
+
+
+localStorage.setItem('projectmanagerv3', JSON.stringify())
+
+
+
+
+
+
+
   return (
     <div className="App">
 
       <div className="nav-bar-container">
-        <div className="nav-bar-wrapper"></div>
+        <div className="nav-bar-wrapper">
+          <div className="nav-bar-header">WORKFLOW</div>
+          <div className="nav-links-container">
+            <div className="nav-link">Project 1</div>
+            <div className="nav-link">Project 1</div>
+            <div className="nav-link">Project 1</div>
+            <div className="nav-link">Project 1</div>
+          </div>
+
+          <div className="nav-footer-container">Settings</div>
+
+        </div>
         
+      </div>
+
+      <div className="main-view-container">
+        <div className="main-view-wrapper">
+          <div className="main-view-header">
+            Project 1
+            <button className="settings-button"></button>
+            </div>
+        </div>
       </div>
      
     </div>

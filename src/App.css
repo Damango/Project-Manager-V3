@@ -3,4 +3,62 @@ body {
 
 .App {
 	height: 100vh;
+	display: grid;
+	grid-template-columns: 300px auto;
+}
+
+.nav-bar-container {
+	position: relative;
+	background-color: white;
+	box-sizing: border-box;
+	border-right: 1px solid black;
+}
+
+.nav-bar-header {
+	text-align: center;
+	box-sizing: border-box;
+	padding: 30px;
+
+	border-bottom: 1px solid gray;
+	font-size: 30px;
+	font-weight: bold;
+}
+
+.nav-links-container {
+}
+
+.nav-link {
+	border-left: 3px solid red;
+	box-sizing: border-box;
+	padding: 12px;
+	margin-top: 10px;
+}
+
+.nav-footer-container {
+	position: absolute;
+	border-top: 1px solid gray;
+	box-sizing: border-box;
+	padding: 20px;
+	width: 100%;
+	bottom: 0px;
+}
+
+.main-view-container {
+	background-color: rgb(228, 228, 228);
+}
+
+.main-view-header {
+	background-color: white;
+	box-sizing: border-box;
+	padding: 30px;
+	font-size: 30px;
+	border-bottom: 1px solid gray;
+}
+
+.settings-button {
+	background-color: black;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	float: right;
 }
