@@ -45,6 +45,12 @@ localStorage.setItem('projectmanagerv3', JSON.stringify())
             Project 1
             <button className="settings-button"></button>
             </div>
+            <div className="all-tasks-container">
+              <div className="todo-tasks"></div>
+              <div className="in-progress-tasks"></div>
+              <div className="stuck-tasks"></div>
+              <div className="complete-tasks"></div>
+            </div>
         </div>
       </div>
      
