@@ -27,17 +27,6 @@ body {
 .nav-links-container {
 }
 
-.nav-link {
-	border-left: 3px solid red;
-	box-sizing: border-box;
-	padding: 12px;
-	margin-top: 10px;
-	font-family: Roboto;
-	font-size: 20px;
-	font-weight: 500;
-	color: #2f3640;
-}
-
 .nav-footer-container {
 	position: absolute;
 	border-top: 1px solid gray;
