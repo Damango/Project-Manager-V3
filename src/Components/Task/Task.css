@@ -1,0 +1,41 @@
+.task-container {
+	position: relative;
+	background-color: white;
+	width: 100%;
+	max-height: 300px;
+	padding: 20px;
+	box-sizing: border-box;
+	box-shadow: 0px 0px 2px 0px black;
+	border-radius: 3px;
+	margin-bottom: 15px;
+}
+
+.task-main-text {
+	font-weight: bold;
+	font-size: 20px;
+	font-family: "Jaldi";
+	color: #191e25;
+}
+
+.task-description {
+	font-size: 13px;
+	margin-top: 15px;
+}
+
+.task-tags-container {
+	position: relative;
+	top: 8px;
+	margin-top: 20px;
+}
+.task-tag {
+	font-size: 12px;
+	display: inline-block;
+	padding: 5px;
+	border-radius: 3px;
+	font-family: "Alata";
+}
+
+.development {
+	background-color: blue;
+	color: white;
+}

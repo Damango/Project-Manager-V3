@@ -19,7 +19,24 @@ localStorage.setItem('projectmanagerv3', JSON.stringify({
   projects:[
     {projectName: 'Phidom',
     projectDescription: 'A React UI Library that I will license out to people',
-  toDoTasks:['asd'],
+  toDoTasks:['asd', 'f', 'f','f','f','f'],
+inProgressTasks:['sdf'],
+stuckTasks:['dfg'],
+completeTasks:['ghj']},
+
+
+
+{projectName: 'Black Box',
+projectDescription: 'A React UI Library that I will license out to people',
+toDoTasks:['asd','f','f'],
+inProgressTasks:['sdf','f', 'f','f'],
+stuckTasks:['dfg'],
+completeTasks:['ghj']},
+
+
+{projectName: 'PC Builder',
+projectDescription: 'A React UI Library that I will license out to people',
+toDoTasks:['asd', 'f'],
 inProgressTasks:['sdf'],
 stuckTasks:['dfg'],
 completeTasks:['ghj']}
@@ -47,11 +64,22 @@ function changeView(data, type){
       <div className="nav-bar-container">
         <div className="nav-bar-wrapper">
           <div className="nav-bar-header">WORKFLOW</div>
-          <div className="nav-links-container">
-            <div className="nav-link" onClick={() => {changeView(workflowData.toDoList, 'to-do-list')}}>To Do List</div>
+
+
+          <div className="nav-link-section">
+            <div className="nav-link-section-header">General</div>
+
+            <div className="nav-links-container">
+              <div className="nav-link nav-selected" onClick={() => {changeView(workflowData.toDoList, 'to-do-list')}}>To Do List</div>
+            </div>
           </div>
-          <div className="nav-links-container">
-           {workflowData.projects.map((project) => <NavLink setTaskType={setTaskType} changeView={changeView} projectData={project}/>)}
+
+
+          <div className="nav-link-section">
+            <div className="nav-link-section-header">Projects</div>
+            <div className="nav-links-container">
+            {workflowData.projects.map((project) => <NavLink setTaskType={setTaskType} changeView={changeView} projectData={project}/>)}
+            </div>
           </div>
 
           <div className="nav-footer-container">Settings</div>
@@ -64,16 +92,11 @@ function changeView(data, type){
         <div className="main-view-wrapper">
           <div className="main-view-header">
             Project 1
-            <button className="settings-button"></button>
+           
             </div>
 
             <TasksContainer taskType={taskType} taskData={taskData} setTaskData={setTaskData}/>
-            <div className="all-tasks-container">
-              <div className="todo-tasks"></div>
-              <div className="in-progress-tasks"></div>
-              <div className="stuck-tasks"></div>
-              <div className="complete-tasks"></div>
-            </div>
+            
         </div>
       </div>
      

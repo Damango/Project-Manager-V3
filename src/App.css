@@ -27,6 +27,17 @@ body {
 .nav-links-container {
 }
 
+.nav-link-section-header {
+	position: relative;
+	font-family: "Open Sans";
+	font-weight: bold;
+	display: inline-block;
+	left: 15px;
+	margin-top: 20px;
+	margin-bottom: 15px;
+	color: #14212e;
+}
+
 .nav-footer-container {
 	position: absolute;
 	border-top: 1px solid gray;
@@ -38,6 +49,13 @@ body {
 
 .main-view-container {
 	background-color: rgb(228, 228, 228);
+}
+
+.main-view-wrapper {
+	position: relative;
+	height: 100%;
+	display: grid;
+	grid-template-rows: 101px auto;
 }
 
 .main-view-header {

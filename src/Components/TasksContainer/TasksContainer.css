@@ -1,0 +1,39 @@
+.tasks-container {
+	position: relative;
+	box-sizing: border-box;
+	padding: 20px;
+	background-color: rgb(243, 243, 243);
+	display: flex;
+	justify-content: space-around;
+}
+
+.tasks-wrapper {
+	position: relative;
+
+	height: 100%;
+	width: 350px;
+}
+
+.tasks-wrapper-header {
+	box-sizing: border-box;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-bottom: 2px solid transparent;
+	margin-bottom: 30px;
+}
+
+.to-do-header {
+	border-color: #004bec;
+}
+
+.in-progress-header {
+	border-color: #ff6600;
+}
+
+.stuck-header {
+	border-color: #bd0000;
+}
+
+.complete-header {
+	border-color: #2ecc71;
+}
