@@ -47,14 +47,16 @@ completeTasks:['ghj']}
 let workflowData = JSON.parse(localStorage.getItem('projectmanagerv3'));
 
 
-const [taskData, setTaskData] = useState(workflowData.toDoList)
-const [taskType, setTaskType] = useState('to-do-list')
+const [viewState, setviewState] = useState(workflowData.toDoList);
+const [taskType, setTaskType] = useState('to-do-list');
+
 
 
 
 function changeView(data, type){
-  setTaskData(data)
+  setviewState(data)
   setTaskType(type)
+  console.log(viewState)
 }
 
 
@@ -90,12 +92,9 @@ function changeView(data, type){
 
       <div className="main-view-container">
         <div className="main-view-wrapper">
-          <div className="main-view-header">
-            Project 1
-           
-            </div>
+          <div className="main-view-header">{viewState.projectName}</div>
 
-            <TasksContainer taskType={taskType} taskData={taskData} setTaskData={setTaskData}/>
+            <TasksContainer taskType={taskType} taskData={viewState} setviewState={setviewState}/>
             
         </div>
       </div>
