@@ -3,7 +3,46 @@ import "./NavLink.css"
 
 
 const NavLink = (props) => {
-    return ( <div className="nav-link" onClick={() => {props.changeView(props.projectData, 'project')}}>{props.projectData.projectName}</div> );
+
+
+  
+    
+
+
+    if(props.type === 'project'){
+        function navLinkStyler(){
+            if(props.viewState.projectName === props.projectData.projectName){
+                return('nav-link nav-selected')
+            }
+    
+            else{
+                return('nav-link')
+            }
+        }
+
+        return ( <div className={navLinkStyler()} onClick={() => {props.changeView(props.projectData, 'project')}}>{props.projectData.projectName}</div> );
+
+    }
+
+    else if(props.type === 'general'){
+
+
+        function navLinkStyler(){
+            if(props.taskType === 'to-do-list'){
+                return('nav-link nav-selected')
+            }
+    
+            else{
+                return('nav-link')
+            }
+        }
+
+
+
+        return(<div className={navLinkStyler()} onClick={() => {props.changeView(props.toDoList, 'to-do-list')}}>To Do List</div>)
+    }
+
+    
 }
  
 export default NavLink;

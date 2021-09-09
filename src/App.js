@@ -72,7 +72,8 @@ function changeView(data, type){
             <div className="nav-link-section-header">General</div>
 
             <div className="nav-links-container">
-              <div className="nav-link nav-selected" onClick={() => {changeView(workflowData.toDoList, 'to-do-list')}}>To Do List</div>
+              <NavLink type='general' toDoList={workflowData.toDoList} changeView={changeView} taskType={taskType}/>
+              
             </div>
           </div>
 
@@ -80,7 +81,7 @@ function changeView(data, type){
           <div className="nav-link-section">
             <div className="nav-link-section-header">Projects</div>
             <div className="nav-links-container">
-            {workflowData.projects.map((project) => <NavLink setTaskType={setTaskType} changeView={changeView} projectData={project}/>)}
+            {workflowData.projects.map((project) => <NavLink type='project' viewState={viewState} setTaskType={setTaskType} changeView={changeView} projectData={project}/>)}
             </div>
           </div>
 
