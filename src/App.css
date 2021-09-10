@@ -27,15 +27,40 @@ body {
 .nav-links-container {
 }
 
+.nav-link-section {
+	position: relative;
+}
+
 .nav-link-section-header {
 	position: relative;
 	font-family: "Open Sans";
 	font-weight: bold;
-	display: inline-block;
+
 	left: 15px;
 	margin-top: 20px;
 	margin-bottom: 15px;
 	color: #14212e;
+
+	box-sizing: border-box;
+	width: 90%;
+}
+
+.add-project-button {
+	font-size: 14px;
+	font-family: "Open Sans";
+	padding-bottom: 3px;
+	padding-top: 3px;
+	font-weight: 600;
+	color: white;
+	background-color: #2ecc71;
+	border-style: none;
+	float: right;
+	transition: 0.3s;
+}
+
+.add-project-button:hover {
+	cursor: pointer;
+	background-color: #089242;
 }
 
 .nav-footer-container {
@@ -72,4 +97,25 @@ body {
 	height: 20px;
 	border-radius: 50%;
 	float: right;
+}
+
+/* width */
+::-webkit-scrollbar {
+	width: 3px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #888;
+	border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #555;
 }

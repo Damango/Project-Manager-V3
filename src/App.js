@@ -14,12 +14,13 @@ function App() {
 
 
 
-localStorage.setItem('projectmanagerv3', JSON.stringify({
+/*localStorage.setItem('projectmanagerv3', JSON.stringify({
   toDoList: ['Do sumin','neva mind'],
   projects:[
     {projectName: 'Phidom',
     projectDescription: 'A React UI Library that I will license out to people',
-  toDoTasks:['asd', 'f', 'f','f','f','f'],
+  toDoTasks:[{taskTitle: 'Create Passive Income',
+              taskDescription: 'Make sure you find a way to make some sort of money while you sleep', taskTags:['Bussiness', 'Development'], subTasks: [1], taskID: 40}, 'f', 'f','f','f','f'],
 inProgressTasks:['sdf'],
 stuckTasks:['dfg'],
 completeTasks:['ghj']},
@@ -41,7 +42,7 @@ inProgressTasks:['sdf'],
 stuckTasks:['dfg'],
 completeTasks:['ghj']}
   ]
-}))
+}))*/
 
 
 let workflowData = JSON.parse(localStorage.getItem('projectmanagerv3'));
@@ -49,6 +50,7 @@ let workflowData = JSON.parse(localStorage.getItem('projectmanagerv3'));
 
 const [viewState, setviewState] = useState(workflowData.toDoList);
 const [taskType, setTaskType] = useState('to-do-list');
+const [counter, setCounter] = useState(1)
 
 
 
@@ -57,6 +59,23 @@ function changeView(data, type){
   setviewState(data)
   setTaskType(type)
   console.log(viewState)
+}
+
+function updateList(newData){
+
+   setCounter(counter + 1)
+   setviewState(newData)
+
+}
+
+
+function mainViewHandler(){
+  if(taskType === 'project'){
+    return( <TasksContainer updateList={updateList} taskType={taskType} taskData={viewState} setviewState={setviewState}/>)
+  }
+  else if(taskType === 'to-do-list'){
+    return (<div>to do list</div>)
+  }
 }
 
 
@@ -79,7 +98,7 @@ function changeView(data, type){
 
 
           <div className="nav-link-section">
-            <div className="nav-link-section-header">Projects</div>
+            <div className="nav-link-section-header">Projects <button className="add-project-button">ADD PROJECT +</button></div>
             <div className="nav-links-container">
             {workflowData.projects.map((project) => <NavLink type='project' viewState={viewState} setTaskType={setTaskType} changeView={changeView} projectData={project}/>)}
             </div>
@@ -95,7 +114,7 @@ function changeView(data, type){
         <div className="main-view-wrapper">
           <div className="main-view-header">{viewState.projectName}</div>
 
-            <TasksContainer taskType={taskType} taskData={viewState} setviewState={setviewState}/>
+           {mainViewHandler()}
             
         </div>
       </div>

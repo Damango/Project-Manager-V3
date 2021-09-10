@@ -9,17 +9,30 @@
 
 .tasks-wrapper {
 	position: relative;
-
+	max-height: 720px;
+	overflow-y: scroll;
 	height: 100%;
 	width: 350px;
+	box-sizing: border-box;
+	padding: 5px;
 }
 
 .tasks-wrapper-header {
+	position: relative;
 	box-sizing: border-box;
 	padding-top: 10px;
 	padding-bottom: 10px;
 	border-bottom: 2px solid transparent;
 	margin-bottom: 30px;
+	font-family: "Titillium Web";
+	font-weight: bold;
+	font-size: 20px;
+	color: #2f3640;
+}
+
+.add-task-button {
+	position: absolute;
+	right: 0px;
 }
 
 .to-do-header {
