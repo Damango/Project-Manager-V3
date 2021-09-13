@@ -16,16 +16,28 @@ const TasksContainer = (props) => {
 
 
     if(taskPlace === 'to-do'){
-      let tasks = props.taskData.toDoTasks;
-      let oldData = props.taskData;
-      tasks.push({taskTitle: 'Test',
+
+      let newObject = {
+        projectName: props.taskData.projectName,
+        projectDescription: props.taskData.projectDescription,
+        toDoTasks: props.taskData.toDoTasks,
+        inProgressTasks: props.taskData.inProgressTasks,
+        stuckTasks: props.taskData.stuckTasks,
+        completeTasks: props.taskData.completeTasks,
+
+      }
+     
+
+      newObject.toDoTasks.push({taskTitle: 'Test',
       taskDescription: 'Make sure you find a way to make some sort of money while you sleep', taskTags:['Bussiness', 'Development'], subTasks: [1], taskID: 40})
-      oldData.toDoTasks = tasks;
-      let newData = oldData;
 
-      console.log(newData)
+      console.log(newObject)
+      
+      
 
-      props.updateList(newData)
+      //console.log(newData)
+
+      props.updateList(newObject)
     }
     
     

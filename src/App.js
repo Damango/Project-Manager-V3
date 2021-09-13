@@ -63,8 +63,9 @@ function changeView(data, type){
 
 function updateList(newData){
 
-   setCounter(counter + 1)
+   console.log(newData)
    setviewState(newData)
+   console.log(viewState)
 
 }
 
@@ -100,7 +101,7 @@ function mainViewHandler(){
           <div className="nav-link-section">
             <div className="nav-link-section-header">Projects <button className="add-project-button">ADD PROJECT +</button></div>
             <div className="nav-links-container">
-            {workflowData.projects.map((project) => <NavLink type='project' viewState={viewState} setTaskType={setTaskType} changeView={changeView} projectData={project}/>)}
+            {workflowData.projects.map((project, index) => <NavLink type='project' index={index} viewState={viewState} setTaskType={setTaskType} changeView={changeView} projectData={project}/>)}
             </div>
           </div>
 
