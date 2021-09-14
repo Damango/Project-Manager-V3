@@ -3,7 +3,7 @@ import './App.css';
 import {useState, useEffect} from 'react'
 import NavLink from "./Components/NavLink/NavLink"
 import TasksContainer from './Components/TasksContainer/TasksContainer';
-
+import AddTaskModal from './Components/AddTaskModal/AddTaskModal';
 
 
 
@@ -14,35 +14,35 @@ function App() {
 
 
 
-/*localStorage.setItem('projectmanagerv3', JSON.stringify({
+localStorage.setItem('projectmanagerv3', JSON.stringify({
   toDoList: ['Do sumin','neva mind'],
   projects:[
     {projectName: 'Phidom',
     projectDescription: 'A React UI Library that I will license out to people',
   toDoTasks:[{taskTitle: 'Create Passive Income',
-              taskDescription: 'Make sure you find a way to make some sort of money while you sleep', taskTags:['Bussiness', 'Development'], subTasks: [1], taskID: 40}, 'f', 'f','f','f','f'],
-inProgressTasks:['sdf'],
-stuckTasks:['dfg'],
-completeTasks:['ghj']},
+              taskDescription: 'Make sure you find a way to make some sort of money while you sleep', taskTags:['Bussiness', 'Development'], subTasks: [1], taskID: 40}],
+inProgressTasks:[],
+stuckTasks:[],
+completeTasks:[]},
 
 
 
 {projectName: 'Black Box',
 projectDescription: 'A React UI Library that I will license out to people',
-toDoTasks:['asd','f','f'],
-inProgressTasks:['sdf','f', 'f','f'],
-stuckTasks:['dfg'],
-completeTasks:['ghj']},
+toDoTasks:[],
+inProgressTasks:[],
+stuckTasks:[],
+completeTasks:[]},
 
 
 {projectName: 'PC Builder',
 projectDescription: 'A React UI Library that I will license out to people',
-toDoTasks:['asd', 'f'],
-inProgressTasks:['sdf'],
-stuckTasks:['dfg'],
-completeTasks:['ghj']}
+toDoTasks:[],
+inProgressTasks:[],
+stuckTasks:[],
+completeTasks:[]}
   ]
-}))*/
+}))
 
 
 let workflowData = JSON.parse(localStorage.getItem('projectmanagerv3'));
@@ -50,7 +50,7 @@ let workflowData = JSON.parse(localStorage.getItem('projectmanagerv3'));
 
 const [viewState, setviewState] = useState(workflowData.toDoList);
 const [taskType, setTaskType] = useState('to-do-list');
-const [counter, setCounter] = useState(1)
+const [addTaskModal, setAddTaskModal] = useState(false)
 
 
 
@@ -58,7 +58,7 @@ const [counter, setCounter] = useState(1)
 function changeView(data, type){
   setviewState(data)
   setTaskType(type)
-  console.log(viewState)
+
 }
 
 function updateList(newData){
@@ -72,7 +72,7 @@ function updateList(newData){
 
 function mainViewHandler(){
   if(taskType === 'project'){
-    return( <TasksContainer updateList={updateList} taskType={taskType} taskData={viewState} setviewState={setviewState}/>)
+    return( <TasksContainer setAddTaskModal={setAddTaskModal} updateList={updateList} taskType={taskType} taskData={viewState} setviewState={setviewState}/>)
   }
   else if(taskType === 'to-do-list'){
     return (<div>to do list</div>)
@@ -80,8 +80,21 @@ function mainViewHandler(){
 }
 
 
+function addTaskModalHandler(){
+  if(addTaskModal){
+    return(<AddTaskModal updateList={updateList} taskData={viewState} updateList={updateList} setAddTaskModal={setAddTaskModal}/>)
+  }
+  else{
+    return('')
+  }
+}
+
+
+
+
   return (
     <div className="App">
+      {addTaskModalHandler()}
 
       <div className="nav-bar-container">
         <div className="nav-bar-wrapper">

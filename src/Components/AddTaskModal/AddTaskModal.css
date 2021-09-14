@@ -1,0 +1,19 @@
+.add-task-modal-container {
+	position: absolute;
+	padding: 15px;
+	box-sizing: border-box;
+	background-color: white;
+	box-shadow: 0px 0px 1px 1px black;
+	width: 1000px;
+	height: 800px;
+	z-index: 2;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.add-task-modal-button {
+	position: absolute;
+	right: 15px;
+	color: red;
+}
