@@ -4,7 +4,7 @@ import {useState, useEffect} from 'react'
 import NavLink from "./Components/NavLink/NavLink"
 import TasksContainer from './Components/TasksContainer/TasksContainer';
 import AddTaskModal from './Components/AddTaskModal/AddTaskModal';
-
+import TaskModal from './Components/TaskModal/TaskModal';
 
 
 
@@ -14,7 +14,7 @@ function App() {
 
 
 
-localStorage.setItem('projectmanagerv3', JSON.stringify({
+/*localStorage.setItem('projectmanagerv3', JSON.stringify({
   toDoList: ['Do sumin','neva mind'],
   projects:[
     {projectName: 'Phidom',
@@ -42,15 +42,16 @@ inProgressTasks:[],
 stuckTasks:[],
 completeTasks:[]}
   ]
-}))
+}))*/
 
 
-let workflowData = JSON.parse(localStorage.getItem('projectmanagerv3'));
 
+const [workflow, setWorkflow] = useState(JSON.parse(localStorage.getItem('projectmanagerv3')))
 
-const [viewState, setviewState] = useState(workflowData.toDoList);
+const [viewState, setviewState] = useState(workflow.toDoList);
 const [taskType, setTaskType] = useState('to-do-list');
 const [addTaskModal, setAddTaskModal] = useState(false)
+const [taskModal, setTaskModal] = useState()
 
 
 
@@ -61,18 +62,45 @@ function changeView(data, type){
 
 }
 
+function saveTaskChange(project){
+
+  let projectsList = workflow.projects;
+
+
+  let projectIndex = projectsList.map(function(e) { return e.projectName; }).indexOf(project.projectName);
+
+  
+  projectsList[projectIndex] = project;
+
+
+  console.log(projectIndex)
+
+  let newWorkflow = {
+    toDoList: workflow.toDoList,
+    projects: projectsList
+  }
+
+  localStorage.setItem('projectmanagerv3', JSON.stringify(newWorkflow))
+
+  setWorkflow(newWorkflow)
+
+
+}
+
 function updateList(newData){
 
-   console.log(newData)
+
+   saveTaskChange(newData)
    setviewState(newData)
-   console.log(viewState)
+   
+
 
 }
 
 
 function mainViewHandler(){
   if(taskType === 'project'){
-    return( <TasksContainer setAddTaskModal={setAddTaskModal} updateList={updateList} taskType={taskType} taskData={viewState} setviewState={setviewState}/>)
+    return( <TasksContainer setTaskModal={setTaskModal} setAddTaskModal={setAddTaskModal} updateList={updateList} taskType={taskType} taskData={viewState} setviewState={setviewState}/>)
   }
   else if(taskType === 'to-do-list'){
     return (<div>to do list</div>)
@@ -90,11 +118,39 @@ function addTaskModalHandler(){
 }
 
 
+function taskModalHandler(){
+  if(taskModal){
+    return(<TaskModal data={taskModal} setTaskModal={setTaskModal}/>)
+  }
+  else{
+    return('')
+  }
+}
+
+function addProject(){
+
+  let newProjects = workflow.projects;
+  newProjects.push({projectName: 'Project Manager',
+  projectDescription: 'A React UI Library that I will license out to people',
+  toDoTasks:[],
+  inProgressTasks:[],
+  stuckTasks:[],
+  completeTasks:[]})
+
+
+
+  setWorkflow({
+    toDoList: ['if'],
+    projects: newProjects
+  })
+
+}
 
 
   return (
     <div className="App">
       {addTaskModalHandler()}
+      {taskModalHandler()}
 
       <div className="nav-bar-container">
         <div className="nav-bar-wrapper">
@@ -105,16 +161,16 @@ function addTaskModalHandler(){
             <div className="nav-link-section-header">General</div>
 
             <div className="nav-links-container">
-              <NavLink type='general' toDoList={workflowData.toDoList} changeView={changeView} taskType={taskType}/>
+              <NavLink type='general' toDoList={workflow.toDoList} changeView={changeView} taskType={taskType}/>
               
             </div>
           </div>
 
 
           <div className="nav-link-section">
-            <div className="nav-link-section-header">Projects <button className="add-project-button">ADD PROJECT +</button></div>
+            <div className="nav-link-section-header">Projects <button onClick={addProject} className="add-project-button">ADD PROJECT +</button></div>
             <div className="nav-links-container">
-            {workflowData.projects.map((project, index) => <NavLink type='project' index={index} viewState={viewState} setTaskType={setTaskType} changeView={changeView} projectData={project}/>)}
+            {workflow.projects.map((project, index) => <NavLink type='project' index={index} viewState={viewState} setTaskType={setTaskType} changeView={changeView} projectData={project}/>)}
             </div>
           </div>
 

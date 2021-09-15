@@ -1,9 +1,26 @@
 import React from 'react';
 import "./Task.css"
+import {useState} from 'react'
 
 const Task = (props) => {
-    console.log(props.data)
-    return (  <div className="task-container" draggable="true">
+
+    const [taskCardMenu, setTaskCardMenu] = useState(false)
+
+
+
+    function taskCardMenuHandler(){
+        if(taskCardMenu){
+            return(<div className="task-card-menu-container"></div>)
+        }
+
+    }
+
+
+
+
+    return (  <div className="task-container" onClick={() => {props.setTaskModal(props.data)}} draggable="true">
+        {taskCardMenuHandler()}
+        <div className="task-card-options-button" onClick={() => {setTaskCardMenu(true)}}><i class="fas fa-ellipsis-h"></i></div>
     <div className="task-main-text">{props.data.taskTitle}</div>
     <div className="task-description">{props.data.taskDescription}</div>
     <div className="task-tags-container">

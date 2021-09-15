@@ -10,11 +10,21 @@
 .tasks-wrapper {
 	position: relative;
 	max-height: 710px;
-	overflow-y: scroll;
+
 	height: 100%;
 	width: 350px;
 	box-sizing: border-box;
 	padding: 5px;
+	overflow-y: scroll;
+}
+
+.tasks-scroll-wrapper {
+	position: relative;
+	overflow-y: scroll;
+
+	background-color: red;
+	height: 100%;
+	width: 350px;
 }
 
 .tasks-wrapper-header {

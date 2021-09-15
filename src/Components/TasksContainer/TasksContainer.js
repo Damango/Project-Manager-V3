@@ -70,7 +70,7 @@ const TasksContainer = (props) => {
           <div className="tasks-wrapper">
            
             {props.taskData.toDoTasks.map((task) => (
-              <Task data={task}/>
+              <Task data={task} setTaskModal={props.setTaskModal}/>
             ))}
           </div>
         </div>
@@ -80,7 +80,7 @@ const TasksContainer = (props) => {
           </div>
           <div className="tasks-wrapper">
             {props.taskData.inProgressTasks.map((task) => (
-              <Task data={task}/>
+              <Task data={task} setTaskModal={props.setTaskModal}/>
             ))}
           </div>
         </div>
@@ -90,7 +90,7 @@ const TasksContainer = (props) => {
           </div>
           <div className="tasks-wrapper">
             {props.taskData.stuckTasks.map((task) => (
-              <Task data={task}/>
+              <Task data={task} setTaskModal={props.setTaskModal}/>
             ))}
           </div>
         </div>
@@ -100,7 +100,7 @@ const TasksContainer = (props) => {
           </div>
           <div className="tasks-wrapper">
             {props.taskData.completeTasks.map((task) => (
-              <Task data={task}/>
+              <Task data={task} setTaskModal={props.setTaskModal}/>
             ))}
           </div>
         </div>
