@@ -6,10 +6,17 @@
 	box-shadow: 0px 0px 1px 1px black;
 	width: 1000px;
 	height: 800px;
-	z-index: 2;
+	z-index: 4;
 	left: 50%;
 	top: 50%;
 	transform: translate(-50%, -50%);
+}
+
+.task-category-selector {
+	border: 1px solid gray;
+	display: inline-block;
+	margin-right: 10px;
+	padding: 8px 12px;
 }
 
 .close-task-modal-button {

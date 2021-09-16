@@ -12,6 +12,7 @@ const TasksContainer = (props) => {
   function addTask(taskPlace){
 
     let newObject = {
+
       projectName: props.taskData.projectName,
       projectDescription: props.taskData.projectDescription,
       toDoTasks: props.taskData.toDoTasks,
@@ -69,8 +70,8 @@ const TasksContainer = (props) => {
           </div>
           <div className="tasks-wrapper">
            
-            {props.taskData.toDoTasks.map((task) => (
-              <Task data={task} setTaskModal={props.setTaskModal}/>
+            {props.taskData.toDoTasks.map((task, index) => (
+              <Task deleteTask={props.deleteTask} data={task} setTaskModal={props.setTaskModal} category="to-do" index={index}/>
             ))}
           </div>
         </div>
@@ -79,8 +80,8 @@ const TasksContainer = (props) => {
             In Progress <span className="task-count">({props.taskData.inProgressTasks.length})</span><button onClick={() => {addTask('in-progress')}} className="add-task-button">+</button>
           </div>
           <div className="tasks-wrapper">
-            {props.taskData.inProgressTasks.map((task) => (
-              <Task data={task} setTaskModal={props.setTaskModal}/>
+            {props.taskData.inProgressTasks.map((task, index) => (
+              <Task deleteTask={props.deleteTask} data={task} setTaskModal={props.setTaskModal} category="in-progress" index={index}/>
             ))}
           </div>
         </div>
@@ -89,8 +90,8 @@ const TasksContainer = (props) => {
             Stuck <span className="task-count">({props.taskData.stuckTasks.length})</span><button onClick={() => {addTask('stuck')}} className="add-task-button">+</button>
           </div>
           <div className="tasks-wrapper">
-            {props.taskData.stuckTasks.map((task) => (
-              <Task data={task} setTaskModal={props.setTaskModal}/>
+            {props.taskData.stuckTasks.map((task, index) => (
+              <Task deleteTask={props.deleteTask} data={task} setTaskModal={props.setTaskModal} category="stuck" index={index}/>
             ))}
           </div>
         </div>
@@ -99,8 +100,8 @@ const TasksContainer = (props) => {
             Complete <span className="task-count">({props.taskData.completeTasks.length})</span><button className="add-task-button">+</button>
           </div>
           <div className="tasks-wrapper">
-            {props.taskData.completeTasks.map((task) => (
-              <Task data={task} setTaskModal={props.setTaskModal}/>
+            {props.taskData.completeTasks.map((task, index) => (
+              <Task deleteTask={props.deleteTask} data={task} setTaskModal={props.setTaskModal}category="complete" index={index}/>
             ))}
           </div>
         </div>

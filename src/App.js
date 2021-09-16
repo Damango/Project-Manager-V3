@@ -59,48 +59,33 @@ const [taskModal, setTaskModal] = useState()
 function changeView(data, type){
   setviewState(data)
   setTaskType(type)
-
 }
 
 function saveTaskChange(project){
 
   let projectsList = workflow.projects;
-
-
   let projectIndex = projectsList.map(function(e) { return e.projectName; }).indexOf(project.projectName);
-
-  
   projectsList[projectIndex] = project;
-
-
-  console.log(projectIndex)
-
   let newWorkflow = {
     toDoList: workflow.toDoList,
     projects: projectsList
   }
-
   localStorage.setItem('projectmanagerv3', JSON.stringify(newWorkflow))
-
   setWorkflow(newWorkflow)
-
 
 }
 
 function updateList(newData){
 
-
    saveTaskChange(newData)
    setviewState(newData)
    
-
-
 }
 
 
 function mainViewHandler(){
   if(taskType === 'project'){
-    return( <TasksContainer setTaskModal={setTaskModal} setAddTaskModal={setAddTaskModal} updateList={updateList} taskType={taskType} taskData={viewState} setviewState={setviewState}/>)
+    return( <TasksContainer deleteTask={deleteTask} setTaskModal={setTaskModal} setAddTaskModal={setAddTaskModal} updateList={updateList} taskType={taskType} taskData={viewState} setviewState={setviewState}/>)
   }
   else if(taskType === 'to-do-list'){
     return (<div>to do list</div>)
@@ -110,7 +95,7 @@ function mainViewHandler(){
 
 function addTaskModalHandler(){
   if(addTaskModal){
-    return(<AddTaskModal updateList={updateList} taskData={viewState} updateList={updateList} setAddTaskModal={setAddTaskModal}/>)
+    return(<AddTaskModal addTask={addTask} updateList={updateList} taskData={viewState} updateList={updateList} setAddTaskModal={setAddTaskModal}/>)
   }
   else{
     return('')
@@ -118,9 +103,123 @@ function addTaskModalHandler(){
 }
 
 
+
+function addTask(taskPlace, data){
+
+  let newObject = {
+    projectName: viewState.projectName,
+    projectDescription: viewState.projectDescription,
+    toDoTasks: viewState.toDoTasks,
+    inProgressTasks: viewState.inProgressTasks,
+    stuckTasks: viewState.stuckTasks,
+    completeTasks: viewState.completeTasks,
+
+  }
+
+  let newTask;
+
+
+  if(data){
+    newTask = data;
+  }
+
+  else{
+    newTask = {
+      taskTitle: document.querySelector('.task-title-input').value,
+        taskDescription: document.querySelector('.task-description-input').value, taskTags:['Bussiness', 'Development'], subTasks: [1], taskID: Math.floor(Math.random() * 2000)
+  }
+  }
+
+  
+  if(taskPlace === 'to-do'){
+    newObject.toDoTasks.push(newTask)
+   
+
+  }
+  else if(taskPlace === 'in-progress'){
+    newObject.inProgressTasks.push(newTask)
+  }
+
+  else if(taskPlace === 'stuck'){
+    newObject.stuckTasks.push(newTask)
+  }
+
+  else if(taskPlace === 'complete'){
+    newObject.completeTasks.push(newTask)
+  }
+  updateList(newObject)
+}
+
+
+
+
+
+function deleteTask(place, index){
+
+
+  let newObject = {
+    projectName: viewState.projectName,
+    projectDescription: viewState.projectDescription,
+    toDoTasks: viewState.toDoTasks,
+    inProgressTasks: viewState.inProgressTasks,
+    stuckTasks: viewState.stuckTasks,
+    completeTasks: viewState.completeTasks,
+
+  }
+
+
+
+
+  if(place === 'to-do'){
+    newObject.toDoTasks.splice(index, 1)
+  }
+  if(place === 'in-progress'){
+    newObject.inProgressTasks.splice(index, 1)
+  }
+
+
+  if(place === 'stuck'){
+    newObject.stuckTasks.splice(index, 1)
+  }
+
+
+  if(place === 'complete'){
+    newObject.completeTasks.splice(index, 1)
+  }
+
+
+
+  updateList(newObject)
+
+
+}
+
+
+function moveTask(sendLocation, removeLocation, data, indexOfRemove){
+
+  console.log(data)
+
+  addTask(sendLocation, data);
+  deleteTask(removeLocation, indexOfRemove)
+
+ 
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
 function taskModalHandler(){
   if(taskModal){
-    return(<TaskModal data={taskModal} setTaskModal={setTaskModal}/>)
+    return(<TaskModal moveTask={moveTask} data={taskModal} setTaskModal={setTaskModal}/>)
   }
   else{
     return('')
