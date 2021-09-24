@@ -99,6 +99,17 @@ body {
 	float: right;
 }
 
+.add-project-modal-container {
+	position: absolute;
+	background-color: white;
+	width: 500px;
+	height: 50px;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 3;
+}
+
 /* width */
 ::-webkit-scrollbar {
 	width: 3px;

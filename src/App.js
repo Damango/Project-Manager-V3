@@ -51,7 +51,9 @@ const [workflow, setWorkflow] = useState(JSON.parse(localStorage.getItem('projec
 const [viewState, setviewState] = useState(workflow.toDoList);
 const [taskType, setTaskType] = useState('to-do-list');
 const [addTaskModal, setAddTaskModal] = useState(false)
-const [taskModal, setTaskModal] = useState()
+const [taskModal, setTaskModal] = useState();
+const [addProjectModal, setAddProjectModal] = useState(false)
+
 
 
 
@@ -76,10 +78,8 @@ function saveTaskChange(project){
 }
 
 function updateList(newData){
-
    saveTaskChange(newData)
    setviewState(newData)
-   
 }
 
 
@@ -113,16 +113,11 @@ function addTask(taskPlace, data){
     inProgressTasks: viewState.inProgressTasks,
     stuckTasks: viewState.stuckTasks,
     completeTasks: viewState.completeTasks,
-
   }
-
   let newTask;
-
-
   if(data){
     newTask = data;
   }
-
   else{
     newTask = {
       taskTitle: document.querySelector('.task-title-input').value,
@@ -130,11 +125,8 @@ function addTask(taskPlace, data){
   }
   }
 
-  
   if(taskPlace === 'to-do'){
     newObject.toDoTasks.push(newTask)
-   
-
   }
   else if(taskPlace === 'in-progress'){
     newObject.inProgressTasks.push(newTask)
@@ -150,12 +142,7 @@ function addTask(taskPlace, data){
   updateList(newObject)
 }
 
-
-
-
-
 function deleteTask(place, index){
-
 
   let newObject = {
     projectName: viewState.projectName,
@@ -164,11 +151,7 @@ function deleteTask(place, index){
     inProgressTasks: viewState.inProgressTasks,
     stuckTasks: viewState.stuckTasks,
     completeTasks: viewState.completeTasks,
-
   }
-
-
-
 
   if(place === 'to-do'){
     newObject.toDoTasks.splice(index, 1)
@@ -177,44 +160,23 @@ function deleteTask(place, index){
     newObject.inProgressTasks.splice(index, 1)
   }
 
-
   if(place === 'stuck'){
     newObject.stuckTasks.splice(index, 1)
   }
-
-
   if(place === 'complete'){
     newObject.completeTasks.splice(index, 1)
   }
-
-
-
   updateList(newObject)
-
 
 }
 
 
 function moveTask(sendLocation, removeLocation, data, indexOfRemove){
 
-  console.log(data)
-
   addTask(sendLocation, data);
   deleteTask(removeLocation, indexOfRemove)
 
- 
-
-
-
 }
-
-
-
-
-
-
-
-
 
 
 function taskModalHandler(){
@@ -229,7 +191,8 @@ function taskModalHandler(){
 function addProject(){
 
   let newProjects = workflow.projects;
-  newProjects.push({projectName: 'Project Manager',
+  let newProjectTitle = document.querySelector('.project-title-input').value
+  newProjects.push({projectName: newProjectTitle,
   projectDescription: 'A React UI Library that I will license out to people',
   toDoTasks:[],
   inProgressTasks:[],
@@ -242,7 +205,17 @@ function addProject(){
     toDoList: ['if'],
     projects: newProjects
   })
+  setAddProjectModal(false)
 
+}
+
+function renderAddProjectModal(){
+  if(addProjectModal){
+    return(<div className="add-project-modal-container">
+      <input placeholder="Project Title" className="project-title-input" />
+      <button onClick={addProject}>Submit</button>
+    </div>)
+  }
 }
 
 
@@ -250,6 +223,7 @@ function addProject(){
     <div className="App">
       {addTaskModalHandler()}
       {taskModalHandler()}
+      {renderAddProjectModal()}
 
       <div className="nav-bar-container">
         <div className="nav-bar-wrapper">
@@ -267,7 +241,7 @@ function addProject(){
 
 
           <div className="nav-link-section">
-            <div className="nav-link-section-header">Projects <button onClick={addProject} className="add-project-button">ADD PROJECT +</button></div>
+            <div className="nav-link-section-header">Projects <button onClick={() => {setAddProjectModal(true)}} className="add-project-button">ADD PROJECT +</button></div>
             <div className="nav-links-container">
             {workflow.projects.map((project, index) => <NavLink type='project' index={index} viewState={viewState} setTaskType={setTaskType} changeView={changeView} projectData={project}/>)}
             </div>
