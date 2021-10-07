@@ -14,35 +14,9 @@ function App() {
 
 
 
-  /*localStorage.setItem('projectmanagerv3', JSON.stringify({
-    toDoList: ['Do sumin','neva mind'],
-    projects:[
-      {projectName: 'Phidom',
-      projectDescription: 'A React UI Library that I will license out to people',
-    toDoTasks:[{taskTitle: 'Create Passive Income',
-                taskDescription: 'Make sure you find a way to make some sort of money while you sleep', taskTags:['Bussiness', 'Development'], subTasks: [1], taskID: 40}],
-  inProgressTasks:[],
-  stuckTasks:[],
-  completeTasks:[]},
-  
-  
-  
-  {projectName: 'Black Box',
-  projectDescription: 'A React UI Library that I will license out to people',
-  toDoTasks:[],
-  inProgressTasks:[],
-  stuckTasks:[],
-  completeTasks:[]},
-  
-  
-  {projectName: 'PC Builder',
-  projectDescription: 'A React UI Library that I will license out to people',
-  toDoTasks:[],
-  inProgressTasks:[],
-  stuckTasks:[],
-  completeTasks:[]}
-    ]
-  }))*/
+  /*localStorage.setItem('projectmanagerv3', JSON.stringify())
+
+  */
 
 
 
@@ -218,6 +192,7 @@ function App() {
       return (<div className="add-project-modal-container">
         <input placeholder="Project Title" className="project-title-input" />
         <button onClick={addProject}>Submit</button>
+        <button onClick={() => {setAddProjectModal(false)}}>X</button>
       </div>)
     }
   }
