@@ -5,7 +5,7 @@ import NavLink from "./Components/NavLink/NavLink"
 import TasksContainer from './Components/TasksContainer/TasksContainer';
 import AddTaskModal from './Components/AddTaskModal/AddTaskModal';
 import TaskModal from './Components/TaskModal/TaskModal';
-
+import ToDoList from './Components/ToDoList/ToDoList';
 
 
 function App() {
@@ -63,7 +63,7 @@ function App() {
       return (<TasksContainer deleteTask={deleteTask} setTaskModal={setTaskModal} setAddTaskModal={setAddTaskModal} updateList={updateList} taskType={taskType} taskData={viewState} setviewState={setviewState} />)
     }
     else if (taskType === 'to-do-list') {
-      return (<div>to do list</div>)
+      return (<ToDoList workflowData={workflow}/>)
     }
   }
 

@@ -1,0 +1,89 @@
+.to-do-list-container {
+	position: relative;
+}
+
+.to-do-list-tasks-container {
+	position: relative;
+
+	width: 60%;
+	left: 50%;
+	transform: translateX(-50%);
+	margin-top: 30px;
+}
+
+.to-do-list-task {
+	position: relative;
+	box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.479);
+	padding: 20px;
+	margin-bottom: 20px;
+	background-color: white;
+}
+
+.check-box-container {
+	position: absolute;
+	background-color: white;
+	color: white;
+	width: 25px;
+	height: 25px;
+	display: inline-block;
+	top: 50%;
+	transform: translateY(-50%);
+	box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.479);
+	overflow: hidden;
+	transition: 0.3s;
+}
+
+.check-box-container:hover {
+	cursor: pointer;
+}
+
+.check-box-container:hover .check-box-hover-circle {
+	cursor: pointer;
+
+	width: 150%;
+	height: 150%;
+}
+.check-box-hover-circle {
+	position: absolute;
+	background-color: #2ecc71;
+	height: 0px;
+	width: 0px;
+	border-radius: 50%;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	transition: 0.3s;
+}
+
+.check-box-container .fas {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 2;
+}
+
+.to-do-list-text {
+	position: relative;
+	left: 45px;
+}
+
+.new-to-do-item-button {
+	background-color: #1660ff;
+	color: white;
+	font-family: "Open Sans";
+	font-weight: bold;
+	font-size: 20px;
+	box-shadow: none;
+	transition: 0.3s;
+}
+
+.new-to-do-item-button:hover {
+	cursor: pointer;
+	background-color: blue;
+}
+
+.new-to-do-item-button .fas {
+	margin-right: 20px;
+}
