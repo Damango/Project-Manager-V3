@@ -79,7 +79,7 @@ const ToDoList = (props) => {
                 <div className="check-box-hover-circle"></div>
             </div>
 
-<           span className="to-do-list-text">{toDoItem}</span>
+<span className="to-do-list-text">{toDoItem}</span>
 
             </div>))}
 

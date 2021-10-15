@@ -58,6 +58,7 @@ function App() {
   }
 
 
+
   function mainViewHandler() {
     if (taskType === 'project') {
       return (<TasksContainer deleteTask={deleteTask} setTaskModal={setTaskModal} setAddTaskModal={setAddTaskModal} updateList={updateList} taskType={taskType} taskData={viewState} setviewState={setviewState} />)
@@ -180,7 +181,7 @@ function App() {
 
 
     setWorkflow({
-      toDoList: ['if'],
+      toDoList: workflow.toDoList,
       projects: newProjects
     })
     setAddProjectModal(false)
