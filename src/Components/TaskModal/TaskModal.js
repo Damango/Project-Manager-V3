@@ -1,10 +1,27 @@
 import React from 'react';
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import { useSpring, animated } from 'react-spring'
 import "./TaskModal.css"
 
 const TaskModal = (props) => {
+
+
+    const modalAnimation = useSpring({from: {opacity: 0, width: 0}, to: {opacity: 1, width: 1000}})
+
+
+
+
+
+
+
     console.log(props.data)
-    return (<div className="task-modal-container">
+
+
+    
+    return (
+    
+        <div className="task-modal-overlay" onClick={() => { props.setTaskModal(undefined) }}>
+    <animated.div className="task-modal-container" style={modalAnimation}>
         <div className="task-modal-header">
             <div className="task-categories-container">
                 {props.data.category}
@@ -17,7 +34,10 @@ const TaskModal = (props) => {
         <button className="close-task-modal-button" onClick={() => { props.setTaskModal(undefined) }}>x</button>
         <div className="task-modal-task-title">{props.data.taskTitle}</div>
         <div className="task-modal-task-description">{props.data.taskDescription}</div>
-    </div>);
+    </animated.div>
+    </div>
+    
+    );
 }
 
 export default TaskModal;

@@ -27,6 +27,7 @@ function App() {
   const [addTaskModal, setAddTaskModal] = useState(false)
   const [taskModal, setTaskModal] = useState();
   const [addProjectModal, setAddProjectModal] = useState(false)
+  const [settingsPage, setSettingsPage] = useState(false)
 
 
 
@@ -61,11 +62,13 @@ function App() {
 
   function mainViewHandler() {
     if (taskType === 'project') {
-      return (<TasksContainer deleteTask={deleteTask} setTaskModal={setTaskModal} setAddTaskModal={setAddTaskModal} updateList={updateList} taskType={taskType} taskData={viewState} setviewState={setviewState} />)
+      return (<TasksContainer deleteProject={deleteProject} deleteTask={deleteTask} setTaskModal={setTaskModal} setAddTaskModal={setAddTaskModal} updateList={updateList} taskType={taskType} index={viewState.index} taskData={viewState} setviewState={setviewState} setSettingsPage={setSettingsPage} settingsPage={settingsPage}/>)
     }
     else if (taskType === 'to-do-list') {
       return (<ToDoList workflowData={workflow}/>)
     }
+
+ 
   }
 
 
@@ -165,6 +168,28 @@ function App() {
     }
   }
 
+ function deleteProject(){
+   
+  let projects = workflow.projects;
+  let newWorkflow = {
+    toDoList: workflow.toDoList,
+    projects: projects
+  }
+  projects.splice(viewState.index, 1)
+  setWorkflow(newWorkflow)
+
+  localStorage.setItem('projectmanagerv3', JSON.stringify(newWorkflow))
+
+ }
+
+ function renderSettingsPage(){
+  if(settingsPage) {
+    return(<div className="project-settings-page-container">
+      SETTINGS
+    </div>)
+  }
+ }
+
   function addProject() {
 
     let newProjects = workflow.projects;
@@ -235,7 +260,7 @@ function App() {
 
       <div className="main-view-container">
         <div className="main-view-wrapper">
-          <div className="main-view-header">{viewState.projectName}</div>
+          <div className="main-view-header">{viewState.projectName} <button onClick={() => {setSettingsPage(true)}}>Settings</button></div>
 
           {mainViewHandler()}
 

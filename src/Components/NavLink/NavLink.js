@@ -20,7 +20,12 @@ const NavLink = (props) => {
             }
         }
 
-        return ( <div className={navLinkStyler()} onClick={() => {props.changeView(props.projectData, 'project')}}>{props.projectData.projectName}</div> );
+        let newObject = {...props.projectData}
+        newObject.index = props.index
+
+
+
+        return ( <div className={navLinkStyler()} onClick={() => {props.changeView(newObject, 'project')}}>{props.projectData.projectName}</div> );
 
     }
 

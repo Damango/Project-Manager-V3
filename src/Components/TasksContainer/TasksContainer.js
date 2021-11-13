@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 
 const TasksContainer = (props) => {
 
-  
+  console.log(props)
 
   
   function addTask(taskPlace){
@@ -43,6 +43,9 @@ const TasksContainer = (props) => {
 
 
 
+  
+
+
 
 
   if (props.taskType === "to-do-list") {
@@ -54,6 +57,8 @@ const TasksContainer = (props) => {
       </div>
     );
   }
+
+
   
   
 
@@ -61,12 +66,30 @@ const TasksContainer = (props) => {
   
   
   else if (props.taskType === "project") {
+
+    
+  function renderSettingsPage(){
+    if(props.settingsPage){
+      return(<div className="settings-page-container">
+        SETTINGS PAGE 
+
+      <button onClick={props.deleteProject}>Delete Project</button>
+
+
+        <button onClick={() => {props.setSettingsPage(false)}}>Close</button>
+
+        </div>)
+    }
+  }
     return (
       <div className="tasks-container">
+        {renderSettingsPage()}
        
         <div className="todo-tasks-container">
-          <div className="tasks-wrapper-header to-do-header">
-            To Do <span className="task-count">({props.taskData.toDoTasks.length})</span><button onClick={() => {props.setAddTaskModal(true)}} className="add-task-button">+</button>
+          <div className="tasks-wrapper-header">
+            <div className="header-dot to-do-header"></div>
+            <div className="task-header-text">To Do</div>
+             <span className="task-count">({props.taskData.toDoTasks.length})</span><button onClick={() => {props.setAddTaskModal(true)}} className="add-task-button">+</button>
           </div>
           <div className="tasks-wrapper">
            
@@ -76,8 +99,10 @@ const TasksContainer = (props) => {
           </div>
         </div>
         <div className="in-progress-tasks-container ">
-          <div className="tasks-wrapper-header in-progress-header">
-            In Progress <span className="task-count">({props.taskData.inProgressTasks.length})</span><button onClick={() => {addTask('in-progress')}} className="add-task-button">+</button>
+          <div className="tasks-wrapper-header">
+          <div className="header-dot in-progress-header"></div>
+          <div className="task-header-text">In Progress</div>
+             <span className="task-count">({props.taskData.inProgressTasks.length})</span><button onClick={() => {addTask('in-progress')}} className="add-task-button">+</button>
           </div>
           <div className="tasks-wrapper">
             {props.taskData.inProgressTasks.map((task, index) => (
@@ -86,8 +111,11 @@ const TasksContainer = (props) => {
           </div>
         </div>
         <div className="stuck-tasks-container">
-          <div className="tasks-wrapper-header stuck-header">
-            Stuck <span className="task-count">({props.taskData.stuckTasks.length})</span><button onClick={() => {addTask('stuck')}} className="add-task-button">+</button>
+          <div className="tasks-wrapper-header ">
+          <div className="header-dot stuck-header"></div>
+          <div className="task-header-text">Stuck</div>
+            
+             <span className="task-count">({props.taskData.stuckTasks.length})</span><button onClick={() => {addTask('stuck')}} className="add-task-button">+</button>
           </div>
           <div className="tasks-wrapper">
             {props.taskData.stuckTasks.map((task, index) => (
@@ -96,8 +124,10 @@ const TasksContainer = (props) => {
           </div>
         </div>
         <div className="complete-tasks-container">
-          <div className="tasks-wrapper-header complete-header">
-            Complete <span className="task-count">({props.taskData.completeTasks.length})</span><button className="add-task-button">+</button>
+          <div className="tasks-wrapper-header ">
+          <div className="header-dot complete-header"></div>
+          <div className="task-header-text">Complete</div>
+            <span className="task-count">({props.taskData.completeTasks.length})</span><button className="add-task-button">+</button>
           </div>
           <div className="tasks-wrapper">
             {props.taskData.completeTasks.map((task, index) => (
