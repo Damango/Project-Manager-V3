@@ -84,11 +84,13 @@ const TasksContainer = (props) => {
     return (
       <div className="tasks-container">
         {renderSettingsPage()}
+
+        
        
         <div className="todo-tasks-container">
           <div className="tasks-wrapper-header">
             <div className="header-dot to-do-header"></div>
-            <div className="task-header-text">To Do</div>
+            <div className="task-header-text">TO DO</div>
              <span className="task-count">({props.taskData.toDoTasks.length})</span><button onClick={() => {props.setAddTaskModal(true)}} className="add-task-button">+</button>
           </div>
           <div className="tasks-wrapper">
@@ -101,7 +103,7 @@ const TasksContainer = (props) => {
         <div className="in-progress-tasks-container ">
           <div className="tasks-wrapper-header">
           <div className="header-dot in-progress-header"></div>
-          <div className="task-header-text">In Progress</div>
+          <div className="task-header-text">IN PROGRESS</div>
              <span className="task-count">({props.taskData.inProgressTasks.length})</span><button onClick={() => {addTask('in-progress')}} className="add-task-button">+</button>
           </div>
           <div className="tasks-wrapper">
@@ -113,7 +115,7 @@ const TasksContainer = (props) => {
         <div className="stuck-tasks-container">
           <div className="tasks-wrapper-header ">
           <div className="header-dot stuck-header"></div>
-          <div className="task-header-text">Stuck</div>
+          <div className="task-header-text">STUCK</div>
             
              <span className="task-count">({props.taskData.stuckTasks.length})</span><button onClick={() => {addTask('stuck')}} className="add-task-button">+</button>
           </div>
@@ -126,7 +128,7 @@ const TasksContainer = (props) => {
         <div className="complete-tasks-container">
           <div className="tasks-wrapper-header ">
           <div className="header-dot complete-header"></div>
-          <div className="task-header-text">Complete</div>
+          <div className="task-header-text">COMPLETE</div>
             <span className="task-count">({props.taskData.completeTasks.length})</span><button className="add-task-button">+</button>
           </div>
           <div className="tasks-wrapper">

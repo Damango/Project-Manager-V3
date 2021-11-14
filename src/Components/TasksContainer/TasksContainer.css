@@ -67,6 +67,11 @@
 	display: inline-block;
 	margin-left: 10px;
 	margin-right: 5px;
+	font-family: "Inter";
+}
+
+.task-count {
+	font-family: "Cairo";
 }
 
 .to-do-header {

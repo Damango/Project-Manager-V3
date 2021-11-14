@@ -42,8 +42,8 @@
 
 .task-main-text {
 	font-weight: bold;
-	font-size: 20px;
-	font-family: "Jaldi";
+	font-size: 19px;
+	font-family: "Source Sans Pro";
 	color: #191e25;
 	line-height: 20px;
 
@@ -51,9 +51,10 @@
 }
 
 .task-description {
-	font-size: 13px;
+	font-size: 14px;
 	margin-top: 15px;
 	transition: 0.15s;
+	font-family: "Poppins";
 }
 
 .task-tags-container {
@@ -66,7 +67,7 @@
 	display: inline-block;
 	padding: 5px;
 	border-radius: 3px;
-	font-family: "Alata";
+	font-family: "Cabin";
 }
 
 .task-card-menu-container {
