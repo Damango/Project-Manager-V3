@@ -149,6 +149,13 @@
 	margin-top: 20px;
 }
 
+.add-sub-task-button {
+	float: right;
+}
+
+.new-sub-task-input {
+}
+
 .sub-task-container {
 	position: relative;
 	background-color: white;

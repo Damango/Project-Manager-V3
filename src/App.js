@@ -53,7 +53,10 @@ function App() {
   }
 
   function updateList(newData) {
+    console.log('THIS IS THE NEW DATA')
+    console.log(newData)
     saveTaskChange(newData)
+
 
     setviewState(newData)
   }
@@ -161,7 +164,7 @@ function App() {
 
   function taskModalHandler() {
     if (taskModal) {
-      return (<TaskModal moveTask={moveTask} data={taskModal} setTaskModal={setTaskModal} />)
+      return (<TaskModal updateList={updateList} viewState={viewState} moveTask={moveTask} data={taskModal} setTaskModal={setTaskModal} />)
     }
     else {
         return ('')
