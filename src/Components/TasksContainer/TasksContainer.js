@@ -52,7 +52,7 @@ const TasksContainer = (props) => {
       return(<div className="settings-page-container">
         SETTINGS PAGE 
 
-      <button onClick={props.deleteProject}>Delete Project</button>
+      <button onClick={() => {props.deleteProject(); props.setSettingsPage(false)}}>Delete Project</button>
 
 
         <button onClick={() => {props.setSettingsPage(false)}}>Close</button>

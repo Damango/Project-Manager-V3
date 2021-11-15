@@ -185,5 +185,21 @@
 	display: inline-block;
 }
 
+.to-do {
+	background-color: #004bec;
+}
+
+.in-progress {
+	background-color: #ff6600;
+}
+
+.stuck {
+	background-color: #bd0000;
+}
+
+.complete {
+	background-color: #2ecc71;
+}
+
 @media only screen and (max-width: 1600px) {
 }

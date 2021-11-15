@@ -9,17 +9,23 @@ const TaskModal = (props) => {
 
     const [taskModalData, setTaskModalData] = useState(props.data)
 
-
-
-    const [subTasks, setSubTasks] = useState(taskModalData.subTasks)
     const [addSubTaskInput, setAddSubTaskInput] = useState(false)
 
 
-    const [taskCategory, setTaskCategory] = useState(taskModalData.category)
+
 
 
     const modalAnimation = useSpring({from: {opacity: 0, right: -1000}, to: {opacity: 1, right: 0}})
 
+
+
+    function updateModal(dataObject){
+
+        let newDataObject = {...dataObject}
+
+        setTaskModalData(newDataObject)
+
+    }
 
     function closeTaskModal(){
         document.querySelector('.task-modal-container').style.transition = '0.3s'
@@ -36,16 +42,28 @@ const TaskModal = (props) => {
 
 
     function moveToNextSection(){
+        
         if(taskModalData.category === 'to-do'){
             props.moveTask('in-progress', taskModalData.category, taskModalData, taskModalData.index)
+            let taskObject = {...taskModalData}
+            taskObject.category = 'in-progress'
+            updateModal(taskObject)
         }
         else if(taskModalData.category === 'in-progress'){
             props.moveTask('stuck', taskModalData.category, taskModalData, taskModalData.index)
+            let taskObject = {...taskModalData}
+            taskObject.category = 'stuck'
+            updateModal(taskObject)
         }
 
         else if(taskModalData.category === 'stuck'){
             props.moveTask('complete', taskModalData.category, taskModalData, taskModalData.index)
+            let taskObject = {...taskModalData}
+            taskObject.category = 'complete'
+            updateModal(taskObject)
         }
+
+      
     }
 
     function submitSubTask(){
@@ -54,19 +72,8 @@ const TaskModal = (props) => {
         let newTaskObject;
 
         let oldProjectObject = {...props.viewState};
-      
-
 
         let newSubTask = document.querySelector('.new-sub-task-input').value
-
-
-      
-
-        console.log(props.viewState)
-        console.log(props.data.category)
-
-
-
         oldTaskObject.subTasks.push(newSubTask)
 
         newTaskObject = oldTaskObject;
@@ -103,20 +110,9 @@ const TaskModal = (props) => {
 
             oldProjectObject.completeTasks[taskIndex] = newTaskObject
         }
-
-
-
-
-
         setTaskModalData(newTaskObject)
         let newProjectObject = oldProjectObject
-
-    
        props.updateList(newProjectObject)
-
-
-
-
 
 
     }
@@ -143,8 +139,8 @@ const TaskModal = (props) => {
 
         <div className="task-modal-category-changer-wrapper">
             <div className="task-modal-category-changer">
-                <div className={"category-color-circle " + taskCategory}></div>
-                <div className="category-changer-text">{taskCategory.toUpperCase()}</div>
+                <div className={"category-color-circle " + taskModalData.category}></div>
+                <div className="category-changer-text">{taskModalData.category.toUpperCase()}</div>
                
             </div>
             <div className="category-changer-arrow-button" onClick={moveToNextSection}><i class="fas fa-caret-right"></i></div>

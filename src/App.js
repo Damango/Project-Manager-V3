@@ -65,7 +65,7 @@ function App() {
 
   function mainViewHandler() {
     if (taskType === 'project') {
-      return (<TasksContainer deleteProject={deleteProject} deleteTask={deleteTask} setTaskModal={setTaskModal} setAddTaskModal={setAddTaskModal} updateList={updateList} taskType={taskType} index={viewState.index} taskData={viewState} setviewState={setviewState} setSettingsPage={setSettingsPage} settingsPage={settingsPage}/>)
+      return (<TasksContainer workFlow={workflow} deleteProject={deleteProject} deleteTask={deleteTask} setTaskModal={setTaskModal} setAddTaskModal={setAddTaskModal} updateList={updateList} taskType={taskType} index={viewState.index} taskData={viewState} setviewState={setviewState} setSettingsPage={setSettingsPage} settingsPage={settingsPage}/>)
     }
     else if (taskType === 'to-do-list') {
       return (<ToDoList workflowData={workflow}/>)
@@ -104,7 +104,7 @@ function App() {
     else {
       newTask = {
         taskTitle: document.querySelector('.task-title-input').value,
-        taskDescription: document.querySelector('.task-description-input').value, taskTags: ['Bussiness', 'Development'], subTasks: [1], taskID: Math.floor(Math.random() * 2000)
+        taskDescription: document.querySelector('.task-description-input').value, taskTags: ['Bussiness', 'Development'], subTasks: [], taskID: Math.floor(Math.random() * 2000)
       }
     }
 
@@ -180,17 +180,10 @@ function App() {
   }
   projects.splice(viewState.index, 1)
   setWorkflow(newWorkflow)
+  setviewState(newWorkflow.projects[viewState.index - 1])
 
   localStorage.setItem('projectmanagerv3', JSON.stringify(newWorkflow))
 
- }
-
- function renderSettingsPage(){
-  if(settingsPage) {
-    return(<div className="project-settings-page-container">
-      SETTINGS
-    </div>)
-  }
  }
 
   function addProject() {
