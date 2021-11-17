@@ -1,0 +1,36 @@
+.sub-task-container {
+	position: relative;
+	background-color: white;
+	border: 1px solid rgba(0, 0, 0, 0.514);
+	padding: 15px 15px;
+	border-radius: 5px;
+	margin-bottom: 10px;
+	font-family: "Inter";
+}
+
+.sub-task-check-box {
+	display: inline-block;
+	border: 1px solid rgb(71, 71, 71);
+	border-radius: 3px;
+	width: 20px;
+	height: 20px;
+	margin-right: 10px;
+	transition: 0.2s;
+}
+
+.sub-task-check-box:hover {
+	background-color: #5f27cd;
+	cursor: pointer;
+}
+
+.sub-task-text {
+	display: inline-block;
+}
+
+.false-complete {
+	background-color: red;
+}
+
+.true-complete {
+	background-color: green;
+}

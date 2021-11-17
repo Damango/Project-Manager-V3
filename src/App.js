@@ -53,11 +53,8 @@ function App() {
   }
 
   function updateList(newData) {
-    console.log('THIS IS THE NEW DATA')
-    console.log(newData)
+   
     saveTaskChange(newData)
-
-
     setviewState(newData)
   }
 
@@ -88,69 +85,46 @@ function App() {
 
   function addTask(taskPlace, data) {
 
-    let newObject = {
+
+    let projectObject = {
       projectName: viewState.projectName,
       projectDescription: viewState.projectDescription,
-      toDoTasks: viewState.toDoTasks,
-      inProgressTasks: viewState.inProgressTasks,
-      stuckTasks: viewState.stuckTasks,
-      completeTasks: viewState.completeTasks,
+      tasks: viewState.tasks
     }
+
     let newTask;
-    if (data) {
-      newTask = data;
-      console.log(viewState)
-    }
-    else {
+   
       newTask = {
         taskTitle: document.querySelector('.task-title-input').value,
-        taskDescription: document.querySelector('.task-description-input').value, taskTags: ['Bussiness', 'Development'], subTasks: [], taskID: Math.floor(Math.random() * 2000)
+        taskDescription: document.querySelector('.task-description-input').value, taskTags: ['Bussiness', 'Development'], subTasks: [], taskID: Math.floor(Math.random() * 2000),
+        category: 'to-do'
+      }
+    
+
+    projectObject.tasks.push(newTask)
+
+    updateList(projectObject)
+  }
+
+  function deleteTask(taskID, index) {
+
+
+    let projectObject = {...viewState}
+
+
+    let i;
+    for(i = 0; i < projectObject.tasks.length; i++){
+      if(projectObject.tasks[i].taskID === taskID){
+        projectObject.tasks.splice(i, 1)
       }
     }
 
-    if (taskPlace === 'to-do') {
-      newObject.toDoTasks.push(newTask)
-    }
-    else if (taskPlace === 'in-progress') {
-      newObject.inProgressTasks.push(newTask)
-    }
+    console.log(taskID)
 
-    else if (taskPlace === 'stuck') {
-      newObject.stuckTasks.push(newTask)
-    }
 
-    else if (taskPlace === 'complete') {
-      newObject.completeTasks.push(newTask)
-    }
-    updateList(newObject)
-  }
+    
 
-  function deleteTask(place, index) {
-
-    let newObject = {
-      projectName: viewState.projectName,
-      projectDescription: viewState.projectDescription,
-      toDoTasks: viewState.toDoTasks,
-      inProgressTasks: viewState.inProgressTasks,
-      stuckTasks: viewState.stuckTasks,
-      completeTasks: viewState.completeTasks,
-    }
-
-    if (place === 'to-do') {
-      newObject.toDoTasks.splice(index, 1)
-    }
-    if (place === 'in-progress') {
-      newObject.inProgressTasks.splice(index, 1)
-    }
-
-    if (place === 'stuck') {
-      newObject.stuckTasks.splice(index, 1)
-    }
-    if (place === 'complete') {
-      newObject.completeTasks.splice(index, 1)
-    }
-    updateList(newObject)
-
+    updateList(projectObject)
   }
 
 
@@ -164,6 +138,7 @@ function App() {
 
   function taskModalHandler() {
     if (taskModal) {
+      
       return (<TaskModal updateList={updateList} viewState={viewState} moveTask={moveTask} data={taskModal} setTaskModal={setTaskModal} />)
     }
     else {
@@ -180,7 +155,14 @@ function App() {
   }
   projects.splice(viewState.index, 1)
   setWorkflow(newWorkflow)
-  setviewState(newWorkflow.projects[viewState.index - 1])
+
+
+
+  setviewState(newWorkflow.projects[viewState.index > 0 ? viewState.index - 1 : 0])
+
+
+
+
 
   localStorage.setItem('projectmanagerv3', JSON.stringify(newWorkflow))
 
@@ -192,11 +174,9 @@ function App() {
     let newProjectTitle = document.querySelector('.project-title-input').value
     newProjects.push({
       projectName: newProjectTitle,
-      projectDescription: 'A React UI Library that I will license out to people',
-      toDoTasks: [],
-      inProgressTasks: [],
-      stuckTasks: [],
-      completeTasks: []
+      projectDescription: 'A Default Description For Now.',
+      tasks:[],
+      
     })
 
 

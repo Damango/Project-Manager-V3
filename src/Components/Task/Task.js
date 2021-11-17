@@ -11,7 +11,7 @@ const Task = (props) => {
     function taskCardMenuHandler(){
         if(taskCardMenu){
             return(<div className="task-card-menu-container">
-                <button onClick={() => {props.deleteTask(props.category, props.index)}}>Delete</button>
+                <button onClick={() => {props.deleteTask(props.data.taskID, props.index)}}>Delete</button>
             </div>)
         }
 
@@ -19,7 +19,7 @@ const Task = (props) => {
 
     function makeTaskModalData(){
         let modalObject = props.data;
-        modalObject.category = props.category
+        modalObject.category = props.data.category
         modalObject.index = props.index
         props.setTaskModal(modalObject)
     }
@@ -36,6 +36,7 @@ const Task = (props) => {
     <div className="task-description">{props.data.taskDescription}</div>
     <div className="task-tags-container">
         <div className="task-tag development">Development</div>
+        <div>{props.data.category}</div>
     </div>
     </div>
  </div> );
