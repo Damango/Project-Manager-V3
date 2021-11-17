@@ -36,7 +36,7 @@ const Task = (props) => {
     <div className="task-description">{props.data.taskDescription}</div>
     <div className="task-tags-container">
         <div className="task-tag development">Development</div>
-        <div>{props.data.category}</div>
+      
     </div>
     </div>
  </div> );
