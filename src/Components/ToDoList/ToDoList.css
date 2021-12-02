@@ -13,10 +13,12 @@
 
 .to-do-list-task {
 	position: relative;
+	top: 0px;
 	box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.479);
 	padding: 20px;
 	margin-bottom: 20px;
 	background-color: white;
+	transition: 0.3s;
 }
 
 .check-box-container {

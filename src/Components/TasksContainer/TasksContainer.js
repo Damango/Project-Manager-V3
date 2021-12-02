@@ -50,13 +50,19 @@ const TasksContainer = (props) => {
     return(<div className="tasks-container">
     {renderSettingsPage()}
 
+
+    <div className="tasks-container-header">
+      <button className="filter-tasks-button"><i class="fas fa-filter"></i> Filter</button>
+      <button className="add-task-button" onClick={() => {props.setAddTaskModal(true)}}>Add Task+</button>
+    </div>
+
     
    
     <div className="todo-tasks-container">
       <div className="tasks-wrapper-header">
         <div className="header-dot to-do-header"></div>
         <div className="task-header-text">TO DO</div>
-         <span className="task-count">()</span><button onClick={() => {props.setAddTaskModal(true)}} className="add-task-button">+</button>
+         <span className="task-count">()</span>
       </div>
       <div className="tasks-wrapper">
 
@@ -71,7 +77,7 @@ const TasksContainer = (props) => {
       <div className="tasks-wrapper-header">
       <div className="header-dot in-progress-header"></div>
       <div className="task-header-text">IN PROGRESS</div>
-         <span className="task-count">()</span><button  className="add-task-button">+</button>
+         <span className="task-count">()</span>
       </div>
       <div className="tasks-wrapper">
       {props.taskData.tasks.filter(task => task.category === 'in-progress').map((task, index) => (
@@ -84,7 +90,7 @@ const TasksContainer = (props) => {
       <div className="header-dot stuck-header"></div>
       <div className="task-header-text">STUCK</div>
         
-         <span className="task-count">()</span><button  className="add-task-button">+</button>
+         <span className="task-count">()</span>
       </div>
       <div className="tasks-wrapper">
       {props.taskData.tasks.filter(task => task.category === 'stuck').map((task, index) => (
@@ -96,7 +102,7 @@ const TasksContainer = (props) => {
       <div className="tasks-wrapper-header ">
       <div className="header-dot complete-header"></div>
       <div className="task-header-text">COMPLETE</div>
-        <span className="task-count">()</span><button className="add-task-button">+</button>
+        <span className="task-count">()</span>
       </div>
       <div className="tasks-wrapper">
       {props.taskData.tasks.filter(task => task.category === 'complete').map((task, index) => (
