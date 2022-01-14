@@ -14,9 +14,12 @@ function App() {
 
 
 
-  /*localStorage.setItem('projectmanagerv3', JSON.stringify())
+  /*localStorage.setItem('projectmanagerv3', JSON.stringify({
+    toDoList: ['test'],
+    projects:[]
+  }))*/
 
-  */
+  
 
 
 
@@ -83,7 +86,7 @@ function App() {
 
 
 
-  function addTask(taskPlace, data) {
+  function addTask(taskData) {
 
 
     let projectObject = {
@@ -91,17 +94,8 @@ function App() {
       projectDescription: viewState.projectDescription,
       tasks: viewState.tasks
     }
-
-    let newTask;
-   
-      newTask = {
-        taskTitle: document.querySelector('.task-title-input').value,
-        taskDescription: document.querySelector('.task-description-input').value, taskTags: ['Bussiness', 'Development'], subTasks: [], taskID: Math.floor(Math.random() * 2000),
-        category: 'to-do'
-      }
-    
-
-    projectObject.tasks.push(newTask)
+    console.log(taskData)
+    projectObject.tasks.push(taskData)
 
     updateList(projectObject)
   }

@@ -1,17 +1,23 @@
 .sub-task-container {
 	position: relative;
 	background-color: white;
-	border: 1px solid rgba(0, 0, 0, 0.514);
-	padding: 15px 15px;
+	box-shadow: 0px 0px 3px 2px rgb(95, 95, 95);
+	height: 60px;
+	padding: 10px;
+	box-sizing: border-box;
 	border-radius: 5px;
-	margin-bottom: 10px;
+	margin-bottom: 15px;
 	font-family: "Inter";
 }
 
 .sub-task-check-box {
-	display: inline-block;
-	border: 1px solid rgb(71, 71, 71);
-	border-radius: 3px;
+	position: relative;
+	float: left;
+	top: 50%;
+	transform: translateY(-50%);
+	background-color: white;
+	border: 2px solid rgb(71, 71, 71);
+	border-radius: 50%;
 	width: 20px;
 	height: 20px;
 	margin-right: 10px;
@@ -24,13 +30,26 @@
 }
 
 .sub-task-text {
-	display: inline-block;
+	position: relative;
+
+	top: 50%;
+	transform: translateY(-50%);
+	float: left;
 }
 
 .false-complete {
-	background-color: red;
+	background-color: white;
 }
 
 .true-complete {
-	background-color: green;
+	background-color: #2ecc71;
+	color: white;
+	box-shadow: 0px 0px 2px 1px black;
+}
+
+.delete-sub-task-button {
+	position: absolute;
+	right: 10px;
+	top: 50%;
+	transform: translateY(-50%);
 }

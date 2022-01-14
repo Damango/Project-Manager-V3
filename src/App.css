@@ -6,6 +6,7 @@ body {
 	width: 100vw;
 	display: grid;
 	grid-template-columns: 300px auto;
+	overflow: hidden;
 }
 
 .nav-bar-container {

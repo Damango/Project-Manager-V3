@@ -71,26 +71,17 @@ const ToDoList = (props) => {
 
     return ( <div className="to-do-list-container">
        <div className="to-do-list-tasks-container">
-          
           {tasksList.map(((toDoItem, index) =>  <div className="to-do-list-task"> 
-
             <div onClick={() => removeTask(index)} className="check-box-container">
                 <i class="fas fa-check"></i>
                 <div className="check-box-hover-circle"></div>
             </div>
-
-<span className="to-do-list-text">{toDoItem}</span>
-
+                <span className="to-do-list-text">{toDoItem}</span>
             </div>))}
-
-           
             <div onClick={() => {if(newTaskInput){setNewTaskInput(false)} else{setNewTaskInput(true)}}} className="to-do-list-task new-to-do-item-button">
                 <i class="fas fa-plus-circle"></i>ADD TASK
-                </div>
-
+            </div>
                 {renderNewTaskInput()}
-                
-            
        </div>
     </div> );
 }

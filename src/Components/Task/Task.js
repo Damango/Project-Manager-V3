@@ -35,7 +35,8 @@ const Task = (props) => {
     <div className="task-main-text">{props.data.taskTitle}</div>
     <div className="task-description">{props.data.taskDescription}</div>
     <div className="task-tags-container">
-        <div className="task-tag development">Development</div>
+        {props.data.taskTags.map((tag) => <div className={"task-tag " + tag}>{tag}</div>)}
+       
       
     </div>
     </div>

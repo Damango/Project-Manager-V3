@@ -84,6 +84,16 @@ const TaskModal = (props) => {
         
     }
 
+    function deleteSubTask(index){
+        let taskObject = taskModalData
+
+
+        taskObject.subTasks.splice(index, 1)
+        
+
+        saveData(taskObject)
+    }
+
 
 
     function completeTask(index){
@@ -168,7 +178,7 @@ const TaskModal = (props) => {
 
                     <div className="task-modal-sub-tasks-container">
 
-                        {taskModalData.subTasks.map((task, index) => <SubTask completeTask={completeTask} data={task} index={index}/>)}
+                        {taskModalData.subTasks.map((task, index) => <SubTask completeTask={completeTask} deleteSubTask={deleteSubTask} data={task} index={index}/>)}
                         
                     
                     </div>
