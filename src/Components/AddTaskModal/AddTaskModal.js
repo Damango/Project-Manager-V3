@@ -47,12 +47,11 @@ const AddTaskModal = (props) => {
           taskDescription: document.querySelector('.task-description-input').innerHTML, 
           taskTags: selectedTags, 
           subTasks: [], 
-          taskID: Math.floor(Math.random() * 2000),
+          taskID: Math.floor(Math.random() * 10000),
           category: 'to-do'
         }
 
         console.log(newTask)
-
         props.addTask(newTask)
     }
 

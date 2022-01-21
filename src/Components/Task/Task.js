@@ -1,19 +1,15 @@
 import React from 'react';
 import "./Task.css"
-import {useState} from 'react'
+import {useState, useRef} from 'react'
 
 const Task = (props) => {
 
-    const [taskCardMenu, setTaskCardMenu] = useState(false)
 
+    const taskRef = useRef(null)
 
 
     function taskCardMenuHandler(){
-        if(taskCardMenu){
-            return(<div className="task-card-menu-container">
-                <button onClick={() => {props.deleteTask(props.data.taskID, props.index)}}>Delete</button>
-            </div>)
-        }
+        
 
     }
 
@@ -24,13 +20,32 @@ const Task = (props) => {
         props.setTaskModal(modalObject)
     }
 
+    function taskCardMenuHandler(){
+
+        let taskElement = taskRef.current
+        let taskPosition = taskElement.getBoundingClientRect()
+        let newMenuObject = {opened: true, taskID: props.data.taskID, position:{x: taskPosition.x + 220, y:taskPosition.y - 20}}
+
+        console.log(props.taskCardMenu.opened)
+
+        if(props.taskCardMenu.opened === true){
+            props.setTaskCardMenu({opened:false, taskID:undefined, position: undefined})
+        }
+        else{
+            props.setTaskCardMenu(newMenuObject)
+        }
+
+        
+        console.log(newMenuObject)
+    }
 
 
 
-    return (  <div className="task-container"  draggable="true">
-        {taskCardMenuHandler()}
+
+    return (  <div className="task-container"  draggable="true" ref={taskRef}>
+     
       
-        <div className="task-card-options-button" onClick={() => {setTaskCardMenu(true)}}><i class="fas fa-ellipsis-h"></i></div>
+        <div className="task-card-options-button" onClick={() => {taskCardMenuHandler()}}><i class="fas fa-ellipsis-h"></i></div>
         <div className="task-card-body" onClick={makeTaskModalData}>
     <div className="task-main-text">{props.data.taskTitle}</div>
     <div className="task-description">{props.data.taskDescription}</div>

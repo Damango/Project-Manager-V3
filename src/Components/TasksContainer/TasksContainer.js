@@ -7,7 +7,11 @@ import { useState, useEffect } from "react";
 const TasksContainer = (props) => {
 
 
+  
 
+
+
+  
 
   if (props.taskType === "to-do-list") {
     return (
@@ -23,15 +27,12 @@ const TasksContainer = (props) => {
 
   else if (props.taskType === "project") {
 
-    
   function renderSettingsPage(){
     if(props.settingsPage){
       return(<div className="settings-page-container">
         SETTINGS PAGE 
 
-      <button onClick={() => {props.deleteProject(); props.setSettingsPage(false)}}>Delete Project</button>
-
-
+        <button onClick={() => {props.deleteProject(); props.setSettingsPage(false)}}>Delete Project</button>
         <button onClick={() => {props.setSettingsPage(false)}}>Close</button>
 
         </div>)
@@ -41,13 +42,8 @@ const TasksContainer = (props) => {
 
 
 
- 
-
-    
-  
-
-
     return(<div className="tasks-container">
+   
     {renderSettingsPage()}
 
 
@@ -67,7 +63,7 @@ const TasksContainer = (props) => {
       <div className="tasks-wrapper">
 
       {props.taskData.tasks.filter(task => task.category === 'to-do').map((task, index) => (
-          <Task deleteTask={props.deleteTask} data={task} setTaskModal={props.setTaskModal} index={index}/>
+          <Task deleteTask={props.deleteTask} data={task} setTaskModal={props.setTaskModal} index={index} taskCardMenu={props.taskCardMenu} setTaskCardMenu={props.setTaskCardMenu}/>
         ))}
        
         
@@ -81,7 +77,7 @@ const TasksContainer = (props) => {
       </div>
       <div className="tasks-wrapper">
       {props.taskData.tasks.filter(task => task.category === 'in-progress').map((task, index) => (
-          <Task deleteTask={props.deleteTask} data={task} setTaskModal={props.setTaskModal} index={index}/>
+          <Task deleteTask={props.deleteTask} data={task} setTaskModal={props.setTaskModal} index={index} taskCardMenu={props.taskCardMenu} setTaskCardMenu={props.setTaskCardMenu}/>
         ))}
       </div>
     </div>
@@ -94,7 +90,7 @@ const TasksContainer = (props) => {
       </div>
       <div className="tasks-wrapper">
       {props.taskData.tasks.filter(task => task.category === 'stuck').map((task, index) => (
-          <Task deleteTask={props.deleteTask} data={task} setTaskModal={props.setTaskModal} index={index}/>
+          <Task deleteTask={props.deleteTask} data={task} setTaskModal={props.setTaskModal} index={index} taskCardMenu={props.taskCardMenu} setTaskCardMenu={props.setTaskCardMenu}/>
         ))}
       </div>
     </div>
@@ -106,7 +102,7 @@ const TasksContainer = (props) => {
       </div>
       <div className="tasks-wrapper">
       {props.taskData.tasks.filter(task => task.category === 'complete').map((task, index) => (
-          <Task deleteTask={props.deleteTask} data={task} setTaskModal={props.setTaskModal} index={index}/>
+          <Task deleteTask={props.deleteTask} data={task} setTaskModal={props.setTaskModal} index={index} taskCardMenu={props.taskCardMenu} setTaskCardMenu={props.setTaskCardMenu}/>
         ))}
       </div>
     </div>

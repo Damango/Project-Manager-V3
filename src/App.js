@@ -31,7 +31,7 @@ function App() {
   const [taskModal, setTaskModal] = useState();
   const [addProjectModal, setAddProjectModal] = useState(false)
   const [settingsPage, setSettingsPage] = useState(false)
-
+  const [taskCardMenu, setTaskCardMenu] = useState({opened:false, taskID: undefined, position:undefined})
 
 
 
@@ -65,7 +65,21 @@ function App() {
 
   function mainViewHandler() {
     if (taskType === 'project') {
-      return (<TasksContainer workFlow={workflow} deleteProject={deleteProject} deleteTask={deleteTask} setTaskModal={setTaskModal} setAddTaskModal={setAddTaskModal} updateList={updateList} taskType={taskType} index={viewState.index} taskData={viewState} setviewState={setviewState} setSettingsPage={setSettingsPage} settingsPage={settingsPage}/>)
+      return (<TasksContainer 
+              workFlow={workflow} 
+              deleteProject={deleteProject} 
+              deleteTask={deleteTask} 
+              setTaskModal={setTaskModal} 
+              setAddTaskModal={setAddTaskModal} 
+              updateList={updateList} 
+              taskType={taskType} 
+              index={viewState.index} 
+              taskData={viewState} 
+              setviewState={setviewState} 
+              setSettingsPage={setSettingsPage} 
+              settingsPage={settingsPage}
+              taskCardMenu={taskCardMenu}
+              setTaskCardMenu={setTaskCardMenu}/>)
     }
     else if (taskType === 'to-do-list') {
       return (<ToDoList workflowData={workflow}/>)
@@ -87,8 +101,6 @@ function App() {
 
 
   function addTask(taskData) {
-
-
     let projectObject = {
       projectName: viewState.projectName,
       projectDescription: viewState.projectDescription,
@@ -100,24 +112,15 @@ function App() {
     updateList(projectObject)
   }
 
-  function deleteTask(taskID, index) {
-
-
+  function deleteTask(taskID) {
     let projectObject = {...viewState}
-
-
     let i;
     for(i = 0; i < projectObject.tasks.length; i++){
       if(projectObject.tasks[i].taskID === taskID){
         projectObject.tasks.splice(i, 1)
       }
     }
-
     console.log(taskID)
-
-
-    
-
     updateList(projectObject)
   }
 
@@ -149,15 +152,7 @@ function App() {
   }
   projects.splice(viewState.index, 1)
   setWorkflow(newWorkflow)
-
-
-
   setviewState(newWorkflow.projects[viewState.index > 0 ? viewState.index - 1 : 0])
-
-
-
-
-
   localStorage.setItem('projectmanagerv3', JSON.stringify(newWorkflow))
 
  }
@@ -193,12 +188,24 @@ function App() {
     }
   }
 
+  function renderTaskMenu(){
+    if(taskCardMenu.opened){
+      return(<div className="task-card-menu-container" style={{left: taskCardMenu.position.x, top: taskCardMenu.position.y}}>
+          <button onClick={() => {deleteTask(taskCardMenu.taskID); setTaskCardMenu({opened:false, taskID:undefined, position: undefined})}}>Delete</button>
+        
+      </div>)
+  }
+    
+
+  }
+
 
   return (
     <div className="App">
       {addTaskModalHandler()}
       {taskModalHandler()}
       {renderAddProjectModal()}
+      {renderTaskMenu()}
 
       <div className="nav-bar-container">
         <div className="nav-bar-wrapper">
