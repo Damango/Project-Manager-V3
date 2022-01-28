@@ -7,12 +7,6 @@ const Task = (props) => {
 
     const taskRef = useRef(null)
 
-
-    function taskCardMenuHandler(){
-        
-
-    }
-
     function makeTaskModalData(){
         let modalObject = props.data;
         modalObject.category = props.data.category
@@ -47,14 +41,12 @@ const Task = (props) => {
       
         <div className="task-card-options-button" onClick={() => {taskCardMenuHandler()}}><i class="fas fa-ellipsis-h"></i></div>
         <div className="task-card-body" onClick={makeTaskModalData}>
-    <div className="task-main-text">{props.data.taskTitle}</div>
-    <div className="task-description">{props.data.taskDescription}</div>
-    <div className="task-tags-container">
-        {props.data.taskTags.map((tag) => <div className={"task-tag " + tag}>{tag}</div>)}
-       
-      
-    </div>
-    </div>
+        <div className="task-main-text">{props.data.taskTitle}</div>
+        <div className="task-description">{props.data.taskDescription}</div>
+        <div className="task-tags-container">
+            {props.data.taskTags.map((tag) => <div className={"task-tag " + tag}>{tag}</div>)}
+        </div>
+        </div>
  </div> );
 }
  
