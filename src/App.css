@@ -86,6 +86,7 @@ body {
 }
 
 .main-view-header {
+	position: relative;
 	background-color: white;
 	box-sizing: border-box;
 	padding: 30px;
@@ -93,23 +94,201 @@ body {
 	border-bottom: 1px solid gray;
 }
 
-.settings-button {
-	background-color: black;
-	width: 20px;
-	height: 20px;
-	border-radius: 50%;
-	float: right;
+.main-view-header-text {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	font-family: "Inter";
+	color: #14181d;
+	font-weight: bold;
+}
+
+.project-settings-button {
+	position: absolute;
+	right: 15px;
+	top: 50%;
+	transform: translateY(-50%);
+	padding: 8px 15px;
+	background-color: #2f3640;
+	color: white;
+	font-family: "Inter";
+	border-style: none;
+	border-radius: 3px;
+	font-size: 18px;
+	transition: 0.3s;
+}
+
+.project-settings-button:hover {
+	cursor: pointer;
+	background-color: #14181d;
 }
 
 .add-project-modal-container {
 	position: absolute;
 	background-color: white;
+	box-shadow: 0px 0px 3px 2px rgb(70, 70, 70);
+	border-radius: 5px;
+	padding: 20px;
 	width: 500px;
-	height: 50px;
+
 	left: 50%;
 	top: 50%;
 	transform: translate(-50%, -50%);
-	z-index: 3;
+	z-index: 20;
+}
+
+.submit-project-button {
+	position: relative;
+	width: 90%;
+	background-color: rgb(13, 77, 255);
+	padding: 10px;
+	border-style: none;
+	color: white;
+	font-family: "Inter";
+	font-size: 18px;
+	transition: 0.3s;
+}
+
+.submit-project-button:hover {
+	cursor: pointer;
+	background-color: rgb(6, 52, 179);
+}
+
+.close-add-project-modal-buton {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	width: 25px;
+	height: 25px;
+	border-style: none;
+	border: 1px solid black;
+	border-radius: 50%;
+	padding: 5px;
+	color: red;
+}
+
+.project-title-input {
+	position: relative;
+	padding: 15px;
+	font-size: 20px;
+	box-sizing: border-box;
+	width: 90%;
+
+	margin-bottom: 10px;
+	font-family: "Inter";
+	border: 1px solid rgb(71, 71, 71);
+	border-radius: 3px;
+}
+.mobile-nav-bar-wrapper {
+	display: none;
+}
+.mobile-nav-bar-button {
+	display: none;
+}
+
+.mobile-nav-bar-container {
+	display: none;
+}
+
+@media only screen and (max-width: 1520px) {
+	.App {
+		height: 100vh;
+		width: 100vw;
+		display: grid;
+		grid-template-columns: 250px auto;
+		overflow: hidden;
+	}
+}
+
+@media only screen and (max-width: 1200px) {
+	.App {
+		height: 100vh;
+		width: 100vw;
+		display: grid;
+		grid-template-columns: 50px auto;
+		overflow: hidden;
+	}
+
+	.mobile-nav-bar-button {
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		top: 10px;
+		display: inline-block;
+		height: 30px;
+		width: 30px;
+		background-color: rgb(20, 43, 255);
+		margin-right: 50px;
+		border-radius: 3px;
+		color: white;
+		z-index: 20;
+	}
+
+	.mobile-nav-bar-button i {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	.mobile-nav-bar-button:hover {
+		cursor: pointer;
+	}
+
+	.nav-bar-wrapper {
+		display: none;
+	}
+
+	.mobile-nav-bar-container {
+		position: absolute;
+		height: 100%;
+
+		width: 0px;
+		z-index: 5;
+		display: inline-block;
+		background-color: purple;
+	}
+
+	.mobile-nav-bar-content {
+		position: absolute;
+		left: 0%;
+		z-index: 3;
+		background-color: white;
+		border-right: 1px solid black;
+		height: 100%;
+		width: 300px;
+		transition: 0.3s;
+	}
+
+	.mobile-overlay {
+		position: absolute;
+		left: 0px;
+		top: 0px;
+		width: 100vw;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.459);
+		z-index: -3;
+	}
+}
+
+@media only screen and (max-width: 800px) {
+	.add-project-modal-container {
+		width: 80%;
+	}
+
+	.project-settings-button {
+		font-size: 12px;
+	}
+
+	.main-view-header {
+		font-size: 20px;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	.add-project-modal-container {
+		width: 70%;
+	}
 }
 
 /* width */

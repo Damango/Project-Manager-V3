@@ -5,6 +5,8 @@
 	background-color: rgb(248, 248, 248);
 	display: flex;
 	justify-content: space-between;
+	overflow-y: hidden;
+	overflow-x: scroll;
 }
 
 .tasks-container-header {
@@ -17,7 +19,8 @@
 	max-height: 710px;
 
 	height: 100%;
-	width: 350px;
+
+	width: 95%;
 	box-sizing: border-box;
 	padding: 5px;
 	overflow-y: scroll;
@@ -34,24 +37,29 @@
 .tasks-wrapper-header {
 	position: relative;
 	box-sizing: border-box;
-	padding-top: 10px;
-	padding-bottom: 10px;
+
 	border-bottom: 2px solid transparent;
 	margin-bottom: 10px;
 	font-family: "Titillium Web";
 	font-weight: bold;
 	font-size: 20px;
 	color: #2f3640;
-	margin-top: 20px;
 }
 
 .settings-page-container {
 	position: absolute;
 	top: 0px;
+	left: 0px;
 	width: 100%;
 	height: 100%;
 	background-color: white;
 	z-index: 2;
+	overflow: hidden;
+}
+
+.delete-project-button {
+	color: white;
+	background-color: red;
 }
 
 .add-task-button {
@@ -61,8 +69,14 @@
 	color: white;
 	padding: 8px 15px;
 	margin-left: 15px;
+	font-family: "Inter";
+	transition: 0.3s;
 }
 
+.add-task-button:hover {
+	cursor: pointer;
+	background-color: #0d8d43;
+}
 .filter-tasks-button {
 	background-color: white;
 	padding: 8px 15px;
@@ -105,16 +119,34 @@
 .complete-header {
 	background-color: #2ecc71;
 }
+.task-categories-wrapper {
+	position: relative;
 
-@media only screen and (max-width: 1600px) {
-	.tasks-wrapper {
+	margin-top: 30px;
+	padding-top: 0px !important;
+	display: grid;
+	grid-template-columns: 25% 25% 25% 25%;
+
+	width: 100%;
+	max-height: 80% !important;
+}
+
+@media only screen and (max-width: 1650px) {
+	.task-categories-wrapper {
 		position: relative;
-		max-height: 710px;
 
-		height: 100%;
-		width: 250px;
-		box-sizing: border-box;
-		padding: 5px;
-		overflow-y: scroll;
+		margin-top: 30px;
+		padding-top: 0px !important;
+		display: flex;
+
+		width: 100%;
+	}
+	.tasks-wrapper {
+		width: 300px;
+	}
+}
+
+@media only screen and (max-width: 1520px) {
+	.tasks-wrapper {
 	}
 }

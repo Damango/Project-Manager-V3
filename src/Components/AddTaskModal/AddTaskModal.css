@@ -3,7 +3,8 @@
 	padding: 15px;
 	box-sizing: border-box;
 	background-color: white;
-	box-shadow: 0px 0px 1px 1px black;
+	box-shadow: 0px 0px 5px 2px black;
+	border-radius: 5px;
 	width: 1000px;
 	height: 500px;
 	z-index: 2;
@@ -17,7 +18,9 @@
 .close-task-modal-button {
 	position: absolute;
 	right: 15px;
-	color: green;
+	top: 15px;
+	z-index: 10;
+	font-size: 20px;
 }
 
 .add-task-modal-input-section {
@@ -28,12 +31,13 @@
 	position: relative;
 	padding: 20px;
 	display: block;
-	width: 90%;
+	width: 100%;
 	font-size: 25px;
 	font-family: "Inter";
 	font-weight: bold;
 	border-radius: 3px;
 	outline: none;
+	box-sizing: border-box;
 }
 
 .task-description-input {
@@ -41,12 +45,13 @@
 	border: 1px solid gray;
 	padding: 20px;
 	display: block;
-	width: 90%;
-	max-height: 250px;
+	width: 100%;
+	min-height: 250px;
 	margin-top: 20px;
 	border-radius: 3px;
 	overflow-y: scroll;
 	outline: none;
+	box-sizing: border-box;
 }
 
 .add-task-labels-container {
@@ -56,7 +61,7 @@
 	width: 100%;
 	height: 300px;
 	float: right;
-	display: flex;
+
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
@@ -64,39 +69,131 @@
 
 .label-button {
 	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
 	display: block;
 	width: 80%;
-	padding: 15px;
+	padding: 10px;
 	font-size: 20px;
 	color: white;
 	border-style: none;
-
+	margin-bottom: 15px;
 	border-radius: 3px;
+	transition: 0.3s;
+	border: 2px solid transparent;
 }
 
 .label-button:hover {
 	cursor: pointer;
 }
 
+.add-task-modal-submit-button {
+	position: absolute;
+	bottom: 15px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 90%;
+	background-color: #2a74ff;
+	color: white;
+	font-family: "Inter";
+
+	font-size: 20px;
+	padding: 10px;
+	border-radius: 3px;
+	transition: 0.3s;
+}
+.add-task-modal-submit-button:hover {
+	cursor: pointer;
+	background-color: #1558d4;
+}
+
+.selected-label {
+	border: 2px solid rgb(0, 0, 0) !important;
+	width: 95%;
+}
+
 .development-label-button {
-	background-color: #2d77ff;
+	background-color: #4511ff;
+}
+
+.development-label-button:hover {
+	background-color: #2f0ab6;
 }
 
 .design-label-button {
 	background-color: #b13bff;
+}
+.design-label-button:hover {
+	background-color: #7c1bd8;
 }
 
 .engineering-label-button {
 	background-color: #e67e22;
 }
 
+.engineering-label-button:hover {
+	background-color: #b95c0a;
+}
+
 .bussiness-label-button {
 	background-color: #2ecc71;
+}
+
+.bussiness-label-button:hover {
+	background-color: #1d9d55;
 }
 
 @media only screen and (max-width: 1600px) {
 	.add-task-modal-container {
 		width: 70%;
 		height: 70%;
+	}
+}
+
+@media only screen and (max-width: 850px) {
+	.add-task-modal-container {
+		display: flex;
+		flex-direction: column;
+		height: 85%;
+	}
+
+	.add-task-labels-container {
+		position: relative;
+		top: 0%;
+		transform: unset;
+		width: 100%;
+		height: unset;
+		float: right;
+		margin-top: 20px;
+	}
+
+	.label-button {
+		font-size: 14px;
+		font-family: "Inter";
+	}
+
+	.task-title-input {
+		margin-top: 35px;
+		font-size: 18px;
+	}
+
+	.task-description-input {
+		min-height: 200px;
+	}
+
+	.add-task-modal-submit-button {
+	}
+}
+
+@media only screen and (max-width: 500px) {
+	.add-task-modal-container {
+		display: flex;
+		flex-direction: column;
+
+		width: 95%;
+	}
+
+	.close-task-modal-button {
+		top: 10px;
 	}
 }

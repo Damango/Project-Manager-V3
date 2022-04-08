@@ -162,7 +162,7 @@ const TaskModal = (props) => {
 					</div>
 				</div>
 
-				<div className="task-modal-task-description task-block">
+				<div className="task-modal-subs-tasks task-block">
 					<div className="task-block-header">
 						<i class="fas fa-book"></i>
 						<div className="task-block-header-text">Tasks</div>
@@ -193,6 +193,7 @@ const TaskModal = (props) => {
 					<div className="task-block-header">
 						<i class="fas fa-comment"></i>
 						<div className="task-block-header-text">Comments</div>
+						<div>COMING SOON</div>
 					</div>
 				</div>
 			</animated.div>

@@ -53,3 +53,15 @@
 	top: 50%;
 	transform: translateY(-50%);
 }
+
+@media only screen and (max-width: 680px) {
+	.sub-task-container {
+		height: unset;
+		padding: 15px;
+	}
+
+	.sub-task-check-box {
+		width: 15px;
+		height: 15px;
+	}
+}

@@ -40,6 +40,8 @@ function App() {
 		position: undefined,
 	});
 
+	const [mobileNavBar, setMobileNavBar] = useState(false);
+
 	function changeView(data, type) {
 		setviewState(data);
 		setTaskType(type);
@@ -181,13 +183,32 @@ function App() {
 		setAddProjectModal(false);
 	}
 
+	function handleAddProject() {
+		let projectTitleInput = document.querySelector(
+			".project-title-input"
+		).value;
+		if (projectTitleInput.length <= 0) {
+			alert("Please enter a project title");
+		} else {
+			addProject();
+		}
+	}
+
 	function renderAddProjectModal() {
 		if (addProjectModal) {
 			return (
 				<div className="add-project-modal-container">
 					<input placeholder="Project Title" className="project-title-input" />
-					<button onClick={addProject}>Submit</button>
 					<button
+						className="submit-project-button"
+						onClick={() => {
+							handleAddProject();
+						}}
+					>
+						Add Project
+					</button>
+					<button
+						className="close-add-project-modal-buton"
 						onClick={() => {
 							setAddProjectModal(false);
 						}}
@@ -226,6 +247,29 @@ function App() {
 		}
 	}
 
+	function toggleMobileNavBar() {
+		setMobileNavBar(!mobileNavBar);
+		console.log("test");
+	}
+
+	function renderMobileNavBar() {
+		let overlayElement = document.querySelector(".mobile-overlay");
+		console.log("RENDER TEST");
+		console.log(mobileNavBar);
+
+		if (overlayElement != null) {
+			if (mobileNavBar) {
+				overlayElement.style.display = "none";
+				return "-1000px";
+			} else {
+				overlayElement.style.display = "inline-block";
+				return "0%";
+			}
+		}
+
+		console.log();
+	}
+
 	return (
 		<div className="App">
 			{addTaskModalHandler()}
@@ -234,6 +278,11 @@ function App() {
 			{renderTaskMenu()}
 
 			<div className="nav-bar-container">
+				<div className="mobile-nav-bar-button-wrapper">
+					<div className="mobile-nav-bar-button" onClick={toggleMobileNavBar}>
+						<i class="fas fa-bars"></i>
+					</div>
+				</div>
 				<div className="nav-bar-wrapper">
 					<div className="nav-bar-header">WORKFLOW</div>
 
@@ -280,11 +329,68 @@ function App() {
 				</div>
 			</div>
 
+			<div className="mobile-nav-bar-container">
+				<div
+					className="mobile-overlay"
+					onClick={() => {
+						toggleMobileNavBar();
+					}}
+				></div>
+				<div
+					className="mobile-nav-bar-content"
+					style={{ left: renderMobileNavBar() }}
+				>
+					<div className="nav-bar-header">WORKFLOW</div>
+
+					<div className="nav-link-section">
+						<div className="nav-link-section-header">General</div>
+
+						<div className="nav-links-container">
+							<NavLink
+								type="general"
+								toDoList={workflow.toDoList}
+								changeView={changeView}
+								taskType={taskType}
+							/>
+						</div>
+					</div>
+
+					<div className="nav-link-section">
+						<div className="nav-link-section-header">
+							Projects{" "}
+							<button
+								onClick={() => {
+									setAddProjectModal(true);
+								}}
+								className="add-project-button"
+							>
+								ADD PROJECT +
+							</button>
+						</div>
+						<div className="nav-links-container">
+							{workflow.projects.map((project, index) => (
+								<NavLink
+									type="project"
+									index={index}
+									viewState={viewState}
+									setTaskType={setTaskType}
+									changeView={changeView}
+									projectData={project}
+								/>
+							))}
+						</div>
+					</div>
+				</div>
+			</div>
+
 			<div className="main-view-container">
 				<div className="main-view-wrapper">
 					<div className="main-view-header">
-						{viewState.projectName}{" "}
+						<span className="main-view-header-text">
+							{viewState.projectName ? viewState.projectName : "TO DO LIST"}
+						</span>
 						<button
+							className="project-settings-button"
 							onClick={() => {
 								setSettingsPage(true);
 							}}

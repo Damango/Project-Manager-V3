@@ -149,6 +149,10 @@
 	margin-top: 20px;
 }
 
+.task-modal-subs-tasks {
+	width: 100%;
+}
+
 .add-sub-task-button {
 	float: right;
 }
@@ -172,5 +176,47 @@
 	background-color: #2ecc71;
 }
 
-@media only screen and (max-width: 1600px) {
+@media only screen and (max-width: 1200px) {
+	.task-modal-container {
+		position: absolute;
+		padding: 30px 50px;
+		box-sizing: border-box;
+		background-color: white;
+		box-shadow: 0px 0px 1px 1px black;
+		width: 80%;
+		height: 100%;
+		z-index: 4;
+		top: 0px;
+		right: -1000px;
+		opacity: 1;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+}
+
+@media only screen and (max-width: 680px) {
+	.task-modal-container {
+		width: 88%;
+		padding: 20px;
+	}
+
+	.task-modal-task-title {
+		font-size: 20px;
+	}
+
+	.task-modal-category-changer-wrapper {
+		font-size: 14px;
+	}
+
+	.task-block-header {
+		font-size: 12px;
+	}
+
+	.task-block-text {
+		font-size: 14px;
+	}
+
+	.task-modal-task-description-text {
+		font-size: 15px;
+	}
 }
